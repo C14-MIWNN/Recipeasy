@@ -1,5 +1,6 @@
 package nl.miwnn.se14.ares.recipeasy.model;
 
+import jakarta.persistence.*;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +16,7 @@ public class Recipe {
     @Id @GeneratedValue
     private Long id;
 
-    @NotBlank
+//    @NotBlank
     @Column(unique = true)
     private String name;
 
