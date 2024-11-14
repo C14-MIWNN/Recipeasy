@@ -1,7 +1,11 @@
 package nl.miwnn.se14.ares.recipeasy.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Johannes
@@ -10,7 +14,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class RecipeController {
 
-    @GetMapping({"/", "/recipe/overview"})
+    @GetMapping("/")
+    private String showHomepage(Model model) {
+        List<String> cuisines = Arrays.asList("Italian", "Mexican", "Japanese", "Indian", "French");
+        model.addAttribute("cuisines", cuisines);
+
+        return "homepage";
+    }
+
+    @GetMapping("/recipe/overview")
     private String showRecipeOverview() {
         return "recipeOverview";
     }
