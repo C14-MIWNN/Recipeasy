@@ -16,7 +16,7 @@ public class RecipeController {
 
     @GetMapping("/")
     private String showHomepage(Model model) {
-        List<String> cuisines = Arrays.asList("Italian", "Mexican", "Japanese", "Indian", "French");
+        List<String> cuisines = Arrays.asList("Italian", "Mexican", "Japanese", "Indian", "French", "All");
         model.addAttribute("cuisines", cuisines);
 
         return "homepage";
