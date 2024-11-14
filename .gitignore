@@ -58,6 +58,5 @@ build/
 .vscode/
 
 *.DS_Store
-.gitignore_original
-!/out/
-!/target/
+!/out/*
+!/target/*

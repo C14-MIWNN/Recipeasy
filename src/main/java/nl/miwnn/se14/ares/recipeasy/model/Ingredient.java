@@ -1,34 +1,30 @@
 package nl.miwnn.se14.ares.recipeasy.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
+import java.util.List;
 import java.util.Set;
 
 /**
  * @author Johannes
- * Making recipes
+ * Ingredients that can go into recipes
  */
 @Entity
-public class Recipe {
+public class Ingredient {
 
     @Id
-    @GeneratedValue
     private Long id;
 
     @NotBlank
     @Column(unique = true)
     private String name;
 
-    @Column(columnDefinition = "TEXT")
-    private String description;
-
-    private int cookTime;
-    private int difficulty;
-
     @ManyToMany
     @NotEmpty
-    private Set<Ingredient> ingredients;
+    private Set<Recipe> recipes;
 }
-
