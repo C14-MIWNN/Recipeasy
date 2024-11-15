@@ -25,7 +25,6 @@ public class Recipe {
     private String description;
 
     private int cookTime;
-    private int difficulty;
 
     @ManyToMany
     @NotEmpty

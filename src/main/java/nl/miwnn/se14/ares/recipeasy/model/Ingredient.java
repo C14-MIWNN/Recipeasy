@@ -24,7 +24,7 @@ public class Ingredient {
     @Column(unique = true)
     private String name;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "ingredients")
     @NotEmpty
     private Set<Recipe> recipes;
 }
