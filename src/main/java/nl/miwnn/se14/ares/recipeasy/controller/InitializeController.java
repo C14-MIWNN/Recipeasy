@@ -11,8 +11,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Controller;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author armazadev
@@ -42,17 +41,14 @@ public class InitializeController {
     private void initializeDB() {
         makeRecipeUser("Admin", "Admin");
 
-//        Ingredient Garlic = makeIngredient("Garlic");
-//        Ingredient Thyme = makeIngredient("Thyme");
-//        Ingredient Rosemary = makeIngredient("Rosemary");
-//
-//
-//        makeRecipe("Ovenbaked Chicken", "Step 1: marinate the chicken. Step 2 set the oven to 300 degrees", 60, Thyme, Garlic, Rosemary);
-//        makeRecipe("Italian style pizza", "Step 1: Season the douch.", 30, Thyme, Garlic, Rosemary);
+        Ingredient Garlic = makeIngredient("Garlic");
+        Ingredient Thyme = makeIngredient("Thyme");
+        Ingredient Rosemary = makeIngredient("Rosemary");
+        Ingredient Chicken = makeIngredient("Chicken");
 
-
+        Recipe chicken = makeRecipe("Oven Baked Chicken", "1. Marinate the chicken. 2. Set the oven at 300 degrees.", 60, Chicken, Garlic, Rosemary);
+        Recipe pizza = makeRecipe("Italian style pizza", "1. Season the dough.", 30, Thyme, Garlic, Rosemary);
     }
-
 
     private Recipe makeRecipe(String name, String description, int cookTime, Ingredient ... ingredients) {
         Recipe recipe = new Recipe();
@@ -60,23 +56,19 @@ public class InitializeController {
         recipe.setDescription(description);
         recipe.setCookTime(cookTime);
 
-        Set<Ingredient> ingredientSet = new HashSet<>();
-        recipe.setIngredients(ingredientSet);
+        Set<Ingredient> recipeIngredients = new HashSet<>(Arrays.asList(ingredients));
+        recipe.setIngredients(recipeIngredients);
 
         recipeRepository.save(recipe);
         return recipe;
-
     }
+
     private Ingredient makeIngredient(String name) {
         Ingredient ingredient = new Ingredient();
         ingredient.setName(name);
 
-        Set<Ingredient> ingredientSet = new HashSet<>();
-        ingredientSet.add(ingredient);
-
         ingredientRepository.save(ingredient);
         return ingredient;
-
     }
 
     private RecipeUser makeRecipeUser(String username, String password) {
@@ -86,5 +78,4 @@ public class InitializeController {
         userService.save(user);
         return user;
     }
-
 }
