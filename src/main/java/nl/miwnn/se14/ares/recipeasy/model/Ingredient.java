@@ -1,9 +1,6 @@
 package nl.miwnn.se14.ares.recipeasy.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
@@ -17,7 +14,7 @@ import java.util.Set;
 @Entity
 public class Ingredient {
 
-    @Id
+    @Id @GeneratedValue
     private Long id;
 
     @NotBlank
