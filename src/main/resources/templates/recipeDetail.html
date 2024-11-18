@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<!--This doesn't work yet-->
+<!--<head th:replace="~{fragments/general :: baseHeader(~{:: title})}">-->
+<head>
+    <title th:text="|${recipeToBeShown.name}|"></title>
+</head>
+<body>
+
+<!--This doesn't work yet-->
+<!--<div th:replace="~{fragments/general :: navbar}"></div>-->
+
+<div class="container">
+    <h1 th:text="|${recipeToBeShown.name} - Cooking steps|"></h1>
+    <p>So you've decided to try your hand at our <span th:text="|${recipeToBeShown.name}|"></span> recipe. Great! Below you'll find the ingredients you will need and the steps you need to follow. Enjoy the process!</p>
+
+    <h3>Ingredients</h3>
+    <table>
+        <tr>
+            <th>Ingredient</th>
+            <th>Amount</th>
+        </tr>
+        <tr th:each="ingredient : ${recipeToBeShown.getIngredients()}">
+            <td th:text="${ingredient.name}"></td>
+            <td>5</td>
+        </tr>
+    </table>
+
+
+
+</div>
+
+<!--These don't work yet-->
+<!--<div th:replace="~{fragments/general :: footer}"></div>-->
+<!--<div th:replace="~{fragments/general :: bottomScripts}"></div>-->
+
+</body>
+</html>
