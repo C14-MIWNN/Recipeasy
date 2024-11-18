@@ -22,11 +22,13 @@
         </tr>
         <tr th:each="ingredient : ${recipeToBeShown.getIngredients()}">
             <td th:text="${ingredient.name}"></td>
-            <td>5</td>
+            <td>x</td>
         </tr>
     </table>
 
-
+    <h3>Steps</h3>
+    <p th:text="${recipeToBeShown.getDescription}"></p>
+    <h3>Enjoy your <span th:text="|${recipeToBeShown.name}|"></span>!</h3>
 
 </div>
 
