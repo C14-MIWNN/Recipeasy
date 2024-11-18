@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 /**
@@ -24,12 +25,17 @@ public class Recipe {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    @Column
     private int cookTime;
 
     @ManyToMany
-    @NotEmpty
+//    @NotEmpty
     private Set<Ingredient> ingredients;
 
+//    @NotEmpty
+    private ArrayList<String> cookingSteps;
+
+    // GETTERS AND SETTERS
     public Long getId() {
         return id;
     }
@@ -70,6 +76,12 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
+    public ArrayList<String> getCookingSteps() {
+        return cookingSteps;
+    }
 
+    public void setCookingSteps(ArrayList<String> cookingSteps) {
+        this.cookingSteps = cookingSteps;
+    }
 }
 
