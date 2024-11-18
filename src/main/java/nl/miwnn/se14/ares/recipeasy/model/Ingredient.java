@@ -22,7 +22,6 @@ public class Ingredient {
     private String name;
 
     @ManyToMany(mappedBy = "ingredients")
-    @NotEmpty
     private Set<Recipe> recipes;
 
     public Long getId() {
