@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org">
+<head th:fragment="baseHeader(title)">
+  <meta charset="UTF-8">
+  <title th:replace="${title}"></title>
+
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.min.css}">
+
+  <link rel="stylesheet" type="text/css" href="/css/library.css" />
+</head>
+<body>
+
+<div th:fragment="navbar">
+  <div class="d-flex justify-content-between align-items-center">
+    <!-- First div: Logo on the left -->
+    <div>
+      <a href="/" class="navbar-brand d-flex flex-column align-items-start">
+        <img src="/Recipeasy_logo.webp" alt="Recipe Logo" style="width:10%; margin-left: 20px; border-radius: 100px;">
+        <span class="logo-text">Recipeasy</span>
+      </a>
+    </div>
+
+
+
+    <div class="d-flex align-items-center">
+      <a th:href="@{/user/profile}">
+        <span class="mdi mdi-account-circle" style="font-size: 2em; margin-right: 5px;"></span>
+      </a>
+      <div class="d-flex">
+        <a class="nav-link" style="margin-right: 5px;" th:href="@{/login}" sec:authorize="isAnonymous()">Login</a>
+        <a class="nav-link" style="margin-right: 5px;"  th:href="@{/logout}" sec:authorize="hasRole('ROLE_USER')">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div th:fragment="footer">
+  <footer class="footer">
+    <p class="text-muted">&copy; 2024 Recipeasy</p>
+  </footer>
+</div>
+
+<div th:fragment="bottomScripts">
+  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</div>
+
+</body>
+</html>
