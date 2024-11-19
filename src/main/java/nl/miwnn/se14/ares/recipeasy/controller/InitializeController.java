@@ -20,13 +20,11 @@ import java.util.*;
 @Controller
 public class InitializeController {
     private final RecipeUserService userService;
-    private final RecipeUserRepository recipeUserRepository;
     private final IngredientRepository ingredientRepository;
     private final RecipeRepository recipeRepository;
 
     public InitializeController(RecipeUserService userService, RecipeUserRepository recipeUserRepository, IngredientRepository ingredientRepository, RecipeRepository recipeRepository) {
         this.userService = userService;
-        this.recipeUserRepository = recipeUserRepository;
         this.ingredientRepository = ingredientRepository;
         this.recipeRepository = recipeRepository;
     }
@@ -46,14 +44,15 @@ public class InitializeController {
         Ingredient Rosemary = makeIngredient("Rosemary");
         Ingredient Chicken = makeIngredient("Chicken");
 
-        Recipe chicken = makeRecipe("Oven Baked Chicken", "1. Marinate the chicken. 2. Set the oven at 300 degrees.", 60, Chicken, Garlic, Rosemary);
-        Recipe pizza = makeRecipe("Italian style pizza", "1. Season the dough.", 30, Thyme, Garlic, Rosemary);
+        Recipe chicken = makeRecipe("ovenbakedchicken", "Oven Baked Chicken", "1. Marinate the chicken. 2. Set the oven at 300 degrees.", 60, Chicken, Garlic, Rosemary);
+        Recipe pizza = makeRecipe("italianpizza", "Italian style pizza", "1. Season the dough.", 30, Thyme, Garlic, Rosemary);
     }
 
-    private Recipe makeRecipe(String name, String description, int cookTime, Ingredient ... ingredients) {
+    private Recipe makeRecipe(String name, String displayName, String cookingSteps, int cookTime, Ingredient ... ingredients) {
         Recipe recipe = new Recipe();
         recipe.setName(name);
-        recipe.setDescription(description);
+        recipe.setDisplayName(displayName);
+        recipe.setCookingSteps(cookingSteps);
         recipe.setCookTime(cookTime);
 
         Set<Ingredient> recipeIngredients = new HashSet<>(Arrays.asList(ingredients));
