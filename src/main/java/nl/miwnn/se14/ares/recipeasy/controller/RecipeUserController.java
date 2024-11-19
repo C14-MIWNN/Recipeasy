@@ -2,11 +2,14 @@ package nl.miwnn.se14.ares.recipeasy.controller;
 
 import jakarta.validation.Valid;
 import nl.miwnn.se14.ares.recipeasy.dto.RecipeUserDTO;
+import nl.miwnn.se14.ares.recipeasy.model.RecipeUser;
 import nl.miwnn.se14.ares.recipeasy.service.RecipeUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 /**
  * @author armankhodadadzade
@@ -20,6 +23,14 @@ public class RecipeUserController {
     public RecipeUserController(RecipeUserService recipeUserService) {
         this.recipeUserService = recipeUserService;
     }
+
+    @GetMapping("/profile")
+    public String showUserProfile(Model datamodel) {
+        RecipeUserDTO currentUser = recipeUserService.getCurrentUser();
+        datamodel.addAttribute("user", currentUser);
+        return "userProfile";
+    }
+
 
     @GetMapping("/overview")
     private String showUserOverview(Model datamodel) {
