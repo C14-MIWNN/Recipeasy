@@ -62,15 +62,15 @@ public class RecipeUserController {
         return "redirect:/user/overview";
     }
 
-    @PostMapping("/register")
-    public String registerUser(@RequestBody RecipeUserDTO userDTO) {
-        if (recipeUserService.usernameInUse(userDTO.getUsername())) {
-            return "Username already in use.";
-        }
-
-        recipeUserService.save(userDTO);
-        return "User registered successfully!";
-    }
+//    @PostMapping("/register")
+//    public String registerUser(@RequestBody RecipeUserDTO userDTO) {
+//        if (recipeUserService.usernameInUse(userDTO.getUsername())) {
+//            return "Username already in use.";
+//        }
+//
+//        recipeUserService.save(userDTO);
+//        return "User registered successfully!";
+//    }
 
 
 }

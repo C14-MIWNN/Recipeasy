@@ -99,10 +99,6 @@ body {
     border-radius: 30px 30px 30px 30px;
     background:  rgba(93, 97, 31, 0.87);
 }
-.card:hover {
-
-}
-
 
 .card-title {
     font-size: 0.7em;
