@@ -4,6 +4,8 @@ import nl.miwnn.se14.ares.recipeasy.dto.RecipeUserDTO;
 import nl.miwnn.se14.ares.recipeasy.model.RecipeUser;
 import nl.miwnn.se14.ares.recipeasy.repositories.RecipeUserRepository;
 import nl.miwnn.se14.ares.recipeasy.service.mapper.RecipeUserMapper;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * @author armazadev
@@ -53,4 +56,14 @@ public class RecipeUserService implements UserDetailsService {
         return recipeUserRepository.findAll();
     }
 
+
+
+    public RecipeUserDTO getCurrentUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        Optional<RecipeUser> userOptional = recipeUserRepository.findByUsername(username);
+
+        return userOptional.map(RecipeUserMapper::toDTO)
+                .orElseThrow(() -> new UsernameNotFoundException("Current user not found"));
+    }
 }

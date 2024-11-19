@@ -14,6 +14,11 @@ public class RecipeUserMapper {
             user.setUsername(dto.getUsername());
             user.setPassword(dto.getPassword());
             return user;
-        }
+    }
+    public static RecipeUserDTO toDTO(RecipeUser user) {
+        RecipeUserDTO dto = new RecipeUserDTO();
+        dto.setUsername(user.getUsername());
+        return dto;
+    }
 
 }
