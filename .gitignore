@@ -58,5 +58,10 @@ build/
 .vscode/
 
 *.DS_Store
-!/out/*
-!/target/*
+/.idea/
+/.idea/*
+/out/
+/out/*
+/target/
+/target/*
+
