@@ -35,6 +35,8 @@ public class Recipe {
     @Column(columnDefinition = "TEXT")
     private String cookingSteps;
 
+    private String imageUrl;
+
     // GETTERS AND SETTERS
     public Long getId() {
         return id;
@@ -82,6 +84,14 @@ public class Recipe {
 
     public void setCookingSteps(String cookingSteps) {
         this.cookingSteps = cookingSteps;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
 
