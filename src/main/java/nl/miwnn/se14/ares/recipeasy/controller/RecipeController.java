@@ -6,8 +6,11 @@ import nl.miwnn.se14.ares.recipeasy.repositories.IngredientRepository;
 import nl.miwnn.se14.ares.recipeasy.repositories.RecipeRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,6 +37,7 @@ public class RecipeController {
         datamodel.addAttribute("cuisines", cuisines);
         datamodel.addAttribute("formUser", new RecipeUserDTO());
         datamodel.addAttribute("formModalHidden", true);
+        datamodel.addAttribute("searchForm", new Recipe());
 
 
         return "homepage";
@@ -47,6 +51,27 @@ public class RecipeController {
     @GetMapping("/recipe/overviewnew")
     private String showRecipeOverviewNew(Model datamodel) {
         datamodel.addAttribute("allRecipes", recipeRepository.findAll());
+        return "recipeOverviewNew";
+    }
+
+    @PostMapping("/search")
+    private String showRecipesBySearchTerm(
+            @ModelAttribute("searchForm") Recipe recipe,
+            BindingResult result,
+            Model datamodel) {
+
+        Optional<List<Recipe>> searchResults = recipeRepository.findByNameContaining(recipe.getName());
+
+        if (searchResults.isEmpty()) {
+            result.rejectValue("name", "search.results.empty",
+                    "We found no recipes with your search term. Try a different search term, or maybe add this recipe yourself!");
+        }
+
+        if (result.hasErrors()) {
+            return "homepage";
+        }
+
+        datamodel.addAttribute("allRecipes", searchResults.get());
         return "recipeOverviewNew";
     }
 
