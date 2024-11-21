@@ -55,22 +55,38 @@ public class RecipeUserController {
         if (result.hasErrors()) {
             datamodel.addAttribute("allUsers", recipeUserService.getAllUsers());
             datamodel.addAttribute("formModalHidden", false);
-            return "userOverview";
+            return "homepage";
         }
 
         recipeUserService.save(userDtoToBeSaved);
-        return "redirect:/user/overview";
+        return "redirect:/";
     }
 
+
+    @GetMapping("/register")
+    public String showRegisterForm(Model datamodel) {
+        datamodel.addAttribute("user", new RecipeUserDTO());
+        datamodel.addAttribute("formUser", new RecipeUserDTO());
+        datamodel.addAttribute("formModalHidden", true);
+        return "registerForm";
+    }
+
+
     @PostMapping("/register")
-    public String registerUser(@RequestBody RecipeUserDTO userDTO) {
+    public String registerUser(@ModelAttribute @Valid RecipeUserDTO userDTO, BindingResult result, Model model) {
         if (recipeUserService.usernameInUse(userDTO.getUsername())) {
-            return "Username already in use.";
+            result.rejectValue("username", "duplicate", "This username is already taken.");
+        }
+
+        if (result.hasErrors()) {
+            model.addAttribute("formUser", userDTO);
+            return "registerForm";
         }
 
         recipeUserService.save(userDTO);
-        return "User registered successfully!";
+        return "redirect:/user/profile";
     }
+
 
 
 }

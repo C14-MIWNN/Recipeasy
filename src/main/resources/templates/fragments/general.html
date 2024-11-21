@@ -24,13 +24,15 @@
 
 
     <div class="d-flex align-items-center">
+      <div class="d-flex">
+        <a class="nav-link" style="margin-right: 5px;" th:href="@{/about}">About</a>
+        <a class="nav-link" style="margin-right: 5px;" th:href="@{/user/register}">Register</a>
+        <a class="nav-link" style="margin-right: 5px;" th:href="@{/login}" sec:authorize="isAnonymous()">Login</a>
+        <a class="nav-link" style="margin-right: 5px;" th:href="@{/logout}" sec:authorize="hasRole('ROLE_USER')">Logout</a>
+      </div>
       <a th:href="@{/user/profile}">
         <span class="mdi mdi-account-circle" style="font-size: 2em; margin-right: 5px;"></span>
       </a>
-      <div class="d-flex">
-        <a class="nav-link" style="margin-right: 5px;" th:href="@{/login}" sec:authorize="isAnonymous()">Login</a>
-        <a class="nav-link" style="margin-right: 5px;"  th:href="@{/logout}" sec:authorize="hasRole('ROLE_USER')">Logout</a>
-      </div>
     </div>
   </div>
 </div>

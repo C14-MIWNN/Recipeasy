@@ -1,5 +1,6 @@
 package nl.miwnn.se14.ares.recipeasy.controller;
 
+import nl.miwnn.se14.ares.recipeasy.dto.RecipeUserDTO;
 import nl.miwnn.se14.ares.recipeasy.model.Recipe;
 import nl.miwnn.se14.ares.recipeasy.repositories.IngredientRepository;
 import nl.miwnn.se14.ares.recipeasy.repositories.RecipeRepository;
@@ -28,9 +29,12 @@ public class RecipeController {
     }
 
     @GetMapping("/")
-    private String showHomepage(Model model) {
+    private String showHomepage(Model datamodel) {
         List<String> cuisines = Arrays.asList("Italian", "Mexican", "Japanese", "Indian", "French", "All");
-        model.addAttribute("cuisines", cuisines);
+        datamodel.addAttribute("cuisines", cuisines);
+        datamodel.addAttribute("formUser", new RecipeUserDTO());
+        datamodel.addAttribute("formModalHidden", true);
+
 
         return "homepage";
     }

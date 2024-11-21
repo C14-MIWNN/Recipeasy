@@ -25,6 +25,7 @@ public class RecipeUser implements UserDetails {
     @Column(unique=true)
     private String username;
     private String password;
+    private String passwordConfirm;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
