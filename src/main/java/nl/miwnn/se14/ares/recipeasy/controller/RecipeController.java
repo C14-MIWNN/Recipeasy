@@ -40,17 +40,19 @@ public class RecipeController {
         return "recipeOverview";
     }
 
+    @GetMapping("/recipe/overviewnew")
+    private String showRecipeOverviewNew(Model datamodel) {
+        datamodel.addAttribute("allRecipes", recipeRepository.findAll());
+        return "recipeOverviewNew";
+    }
 
     @GetMapping("/recipe/detail/{recipeName}")
     private String showRecipeDetailPage(@PathVariable("recipeName") String recipeName, Model datamodel) {
         Optional<Recipe> recipe = recipeRepository.findByName(recipeName);
-
         if (recipe.isEmpty()) {
             return "redirect:/recipe/overview";
         }
-
         datamodel.addAttribute("recipeToBeShown", recipe.get());
-
         return "recipeDetail";
     }
 }
