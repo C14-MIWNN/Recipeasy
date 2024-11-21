@@ -51,10 +51,10 @@ public class InitializeController {
         Ingredient OliveOil = makeIngredient("Olive oil");
         Ingredient Vegetables = makeIngredient("Vegetables");
 
-        Recipe chicken = makeRecipe("ovenbakedchicken", "Oven Baked Chicken", "1. Marinate the chicken.\n2. Set the oven at 300 degrees.", 60, "https://cdn.pixabay.com/photo/2024/01/19/12/16/chicken-8518910_1280.jpg", Chicken, Garlic, Rosemary);
+        Recipe chicken = makeRecipe("ovenbakedchicken", "Oven Baked Chicken", "1. Marinate the chicken. 2. Set the oven at 300 degrees.", 60, "https://cdn.pixabay.com/photo/2024/01/19/12/16/chicken-8518910_1280.jpg", Chicken, Garlic, Rosemary);
         Recipe pizza = makeRecipe("italianpizza", "Italian style pizza", "1. Season the dough.", 30, "https://cdn.pixabay.com/photo/2024/03/01/08/44/pizza-8605916_1280.jpg", Thyme, Garlic, Rosemary);
-        Recipe steak = makeRecipe("steak", "Juicy steak", "1. Step one./n2. Step two.", 15, "https://cdn.pixabay.com/photo/2024/08/04/15/47/ai-generated-8944735_1280.jpg", Beaf, Pepper, Salt);
-        Recipe stirfry = makeRecipe("stirfry", "Stir Fry", "1. Step one./n2. Step two.", 30, "https://cdn.pixabay.com/photo/2024/02/22/06/50/wok-8589237_1280.png", Vegetables, OliveOil);
+        Recipe steak = makeRecipe("steak", "Juicy steak", "1. Step one. 2. Step two.", 15, "https://cdn.pixabay.com/photo/2024/08/04/15/47/ai-generated-8944735_1280.jpg", Beaf, Pepper, Salt);
+        Recipe stirfry = makeRecipe("stirfry", "Stir Fry", "1. Step one. 2. Step two.", 30, "https://cdn.pixabay.com/photo/2024/02/22/06/50/wok-8589237_1280.png", Vegetables, OliveOil);
     }
 
     private Recipe makeRecipe(String name, String displayName, String cookingSteps, int cookTime, String imageUrl, Ingredient ... ingredients) {
