@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{fragments/general :: baseHeader(~{:: title})}">
+  <title>Recipe Form</title>
+</head>
+<body>
+
+<h1>Create a new recipe</h1>
+
+<form class="row g-3" th:action="@{/recipe/save}" method="post" th:object="${formRecipe}">
+  <div class="row g-3 align-items-center">
+    <div class="col-3">
+      <label for="title" class="col-form-label">Title</label>
+    </div>
+    <div class="col-9">
+      <input type="text" id="title" class="form-control" th:field="*{title}">
+    </div>
+  </div>
+
+  <div class="row g-3 align-items-center">
+    <div class="col-3">
+      <label for="shortDescription" class="col-form-label">Short description of recipe</label>
+    </div>
+    <div class="col-9">
+      <textarea id="shortDescription" class="form-control" th:field="*{shortDescription}"></textarea>
+    </div>
+  </div>
+
+  <div class="row g-3 align-items-center">
+    <div class="col-3">
+      <label for="prepTime" class="col-form-label">Preparation time</label>
+    </div>
+    <div class="col-9">
+      <input type="text" id="prepTime" class="form-control" th:field="*{prepTime}">
+    </div>
+  </div>
+
+  <div class="row g-3 align-items-center">
+    <div class="col-3">
+      <label for="cookTime" class="col-form-label">Cooking time</label>
+    </div>
+    <div class="col-9">
+      <input type="text" id="cookTime" class="form-control" th:field="*{cookTime}">
+    </div>
+  </div>
+
+  <div class="row g-3 align-items-center">
+    <div class="col-3">
+      <label for="ingredients" class="col-form-label">Ingredients</label>
+    </div>
+    <div class="col-9">
+      <textarea id="ingredients" class="form-control" th:field="*{ingredients}"></textarea>
+    </div>
+  </div>
+
+  <div class="row g-3 align-items-center">
+    <div class="col-3">
+      <label for="instructions" class="col-form-label">Instructions</label>
+    </div>
+    <div class="col-9">
+      <textarea id="instructions" class="form-control" th:field="*{instructions}"></textarea>
+    </div>
+  </div>
+
+  <div class="row g-3 align-items-center">
+    <div class="col-3">
+      <label for="imageUrl" class="col-form-label">Image URL</label>
+    </div>
+    <div class="col-9">
+      <input type="url" id="imageUrl" class="form-control" th:field="*{imageUrl}">
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-custom-save mb-3">Save Recipe</button>
+</form>
+
+
+<a th:href="@{/recipe/overview}">Go back to the overview</a>
+
+<div class="container">
+  <ul>
+    <li th:each="recipe: ${allRecipes}" th:text="${recipe.title}"></li>
+  </ul>
+
+  <button type="button"
+          class="btn btn-outline-success btn-lg px-4 fw-bold position-absolute top-0 end-0 m-2"
+          data-bs-toggle="modal" data-bs-target="#newRecipe">
+    <i class="bi bi-plus-square"></i> Add recipe
+  </button>
+  <div th:replace="~{fragments/recipeAddModal :: recipeFormModal(${formRecipe}, ${#fields})}"></div>
+</div>
+
+<div th:replace="~{fragments/general :: footer}"></div>
+<div th:replace="~{fragments/general :: bottomScripts}"></div>
+
+
+
+</body>
+</html>

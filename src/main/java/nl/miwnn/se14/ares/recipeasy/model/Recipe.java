@@ -16,10 +16,21 @@ public class Recipe {
     @Id
     @GeneratedValue
     private Long id;
+    private String title;
+    private String shortDescription;
+    private String prepTime;
+    private String instructions;
+    private String imageUrl;
 
     @NotBlank
     @Column(unique = true)
     private String name;
+
+    @ManyToMany
+    private Set<RecipeUser> likedByUserSet;
+
+    @ManyToOne
+    private RecipeUser recipeAuthor;
 
     @Column
     private String displayName;
@@ -82,6 +93,62 @@ public class Recipe {
 
     public void setCookingSteps(String cookingSteps) {
         this.cookingSteps = cookingSteps;
+    }
+
+    public Set<RecipeUser> getLikedByUserSet() {
+        return likedByUserSet;
+    }
+
+    public void setLikedByUserSet(Set<RecipeUser> likedByUserSet) {
+        this.likedByUserSet = likedByUserSet;
+    }
+
+    public RecipeUser getRecipeAuthor() {
+        return recipeAuthor;
+    }
+
+    public void setRecipeAuthor(RecipeUser recipeAuthor) {
+        this.recipeAuthor = recipeAuthor;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+    }
+
+    public String getPrepTime() {
+        return prepTime;
+    }
+
+    public void setPrepTime(String prepTime) {
+        this.prepTime = prepTime;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
 

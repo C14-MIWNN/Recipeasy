@@ -2,13 +2,19 @@ package nl.miwnn.se14.ares.recipeasy.controller;
 
 import jakarta.validation.Valid;
 import nl.miwnn.se14.ares.recipeasy.dto.RecipeUserDTO;
+import nl.miwnn.se14.ares.recipeasy.model.Recipe;
 import nl.miwnn.se14.ares.recipeasy.model.RecipeUser;
+import nl.miwnn.se14.ares.recipeasy.repositories.RecipeRepository;
+import nl.miwnn.se14.ares.recipeasy.repositories.RecipeUserRepository;
 import nl.miwnn.se14.ares.recipeasy.service.RecipeUserService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -19,15 +25,31 @@ import java.util.Optional;
 @RequestMapping("/user")
 public class RecipeUserController {
     private final RecipeUserService recipeUserService;
+    private final RecipeUserRepository recipeUserRepository;
+    private final RecipeRepository recipeRepository;
 
-    public RecipeUserController(RecipeUserService recipeUserService) {
+    public RecipeUserController(RecipeUserService recipeUserService, RecipeUserRepository recipeUserRepository, RecipeRepository recipeRepository) {
         this.recipeUserService = recipeUserService;
+        this.recipeUserRepository = recipeUserRepository;
+        this.recipeRepository = recipeRepository;
     }
 
     @GetMapping("/profile")
     public String showUserProfile(Model datamodel) {
         RecipeUserDTO currentUser = recipeUserService.getCurrentUser();
+        RecipeUser user = new RecipeUser();
         datamodel.addAttribute("user", currentUser);
+        List<Recipe> userRecipes = List.of();
+        datamodel.addAttribute("userRecipes", userRecipes);
+        datamodel.addAttribute("newRecipe", new Recipe());
+        
+        RecipeUser recipeAuthor = recipeUserRepository.findByUsername(currentUser.getUsername())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+
+        userRecipes = recipeRepository.findByRecipeAuthor(recipeAuthor);
+        datamodel.addAttribute("userRecipes", userRecipes);
+
         return "userProfile";
     }
 

@@ -16,18 +16,27 @@
 </div>
 
 <div class="container mt-5">
-    <h1>Welcome, <span th:text="${user.username}">Guest</span>!</h1>
+<!--    <h1>Welcome, <span th:text="${user.username}">Guest</span>!</h1>-->
 
     <div class="card mt-4">
         <div class="card-body">
             <h3>Your Profile Information</h3>
-            <p><strong>Username:</strong> <span th:text="${user.username}"></span></p>
+<!--            <p><strong>Username:</strong> <span th:text="${user.username}"></span></p>-->
         </div>
     </div>
 
     <div class="mt-4">
-        <h3>Saved Recipes</h3>
+        <h3>Save a Recipe</h3>
+
         <p>Feature coming soon!</p>
+        <div class="mt-4">
+            <h3>Your Recipes</h3>
+            <div th:each="recipe : ${userRecipes}">
+                <p th:text="${recipe.name}">Recipe Name</p>
+                <p th:text="${recipe.cookTime}">Cook Time</p>
+                <!-- Add more recipe details as needed -->
+            </div>
+        </div>
     </div>
 </div>
 
