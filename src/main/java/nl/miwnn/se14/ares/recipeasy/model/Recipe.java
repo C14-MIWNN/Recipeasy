@@ -20,7 +20,6 @@ public class Recipe {
     private String shortDescription;
     private String prepTime;
     private String instructions;
-    private String imageUrl;
 
     @NotBlank
     @Column(unique = true)
@@ -45,6 +44,8 @@ public class Recipe {
     @NotBlank
     @Column(columnDefinition = "TEXT")
     private String cookingSteps;
+
+    private String imageUrl;
 
     // GETTERS AND SETTERS
     public Long getId() {

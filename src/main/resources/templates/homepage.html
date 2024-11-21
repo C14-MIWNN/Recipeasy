@@ -39,8 +39,8 @@
     </nav>
 
     <div class="search-container">
-        <form action="/search" method="Post">
-            <input type="text" name="query" placeholder="Search for a recipe or ingredient...">
+        <form th:action="@{/search}" method="post" th:object="${searchForm}" >
+            <input type="text" name="query" th:field="*{name}" placeholder="Search for a recipe ...">
             <button type="submit" class="btn btn-primary ms-2">Search</button>
         </form>
     </div>

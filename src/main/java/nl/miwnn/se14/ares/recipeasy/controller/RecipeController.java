@@ -45,6 +45,7 @@ public class RecipeController {
         datamodel.addAttribute("cuisines", cuisines);
         datamodel.addAttribute("formUser", new RecipeUserDTO());
         datamodel.addAttribute("formModalHidden", true);
+        datamodel.addAttribute("searchForm", new Recipe());
         datamodel.addAttribute("recipe", new Recipe());
 
 
@@ -56,17 +57,40 @@ public class RecipeController {
         return "recipeOverview";
     }
 
+    @GetMapping("/recipe/overviewnew")
+    private String showRecipeOverviewNew(Model datamodel) {
+        datamodel.addAttribute("allRecipes", recipeRepository.findAll());
+        return "recipeOverviewNew";
+    }
+
+    @PostMapping("/search")
+    private String showRecipesBySearchTerm(
+            @ModelAttribute("searchForm") Recipe recipe,
+            BindingResult result,
+            Model datamodel) {
+
+        Optional<List<Recipe>> searchResults = recipeRepository.findByNameContaining(recipe.getName());
+
+        if (searchResults.isEmpty()) {
+            result.rejectValue("name", "search.results.empty",
+                    "We found no recipes with your search term. Try a different search term, or maybe add this recipe yourself!");
+        }
+
+        if (result.hasErrors()) {
+            return "homepage";
+        }
+
+        datamodel.addAttribute("allRecipes", searchResults.get());
+        return "recipeOverviewNew";
+    }
 
     @GetMapping("/recipe/detail/{recipeName}")
     private String showRecipeDetailPage(@PathVariable("recipeName") String recipeName, Model datamodel) {
         Optional<Recipe> recipe = recipeRepository.findByName(recipeName);
-
         if (recipe.isEmpty()) {
             return "redirect:/recipe/overview";
         }
-
         datamodel.addAttribute("recipeToBeShown", recipe.get());
-
         return "recipeDetail";
     }
 
