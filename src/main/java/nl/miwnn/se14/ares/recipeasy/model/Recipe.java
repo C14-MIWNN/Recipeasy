@@ -38,7 +38,6 @@ public class Recipe {
     private int cookTime;
 
     @ManyToMany
-    @NotEmpty
     private Set<Ingredient> ingredients;
 
     @NotBlank
