@@ -12,13 +12,12 @@
         <a th:href="@{/recipe/detail/{recipeName}(recipeName = ${recipe.name})}">
             <img style="width:150px; border-radius: 15px" th:src="${recipe.imageUrl}" th:alt="${recipe.displayName}"/>
 
-            <h3 class="card-title" th:text="${recipe.displayName}"></h3>
+            <p class="card-title" th:text="${recipe.displayName}"></p>
         </a>
     </div>
     <div>
-        <p class="bi bi-stopwatch" th:text="|Cooking time ${recipe.cookTime} minutes|"></p>
+        <p class="bi bi-stopwatch" th:text="|&nbsp${recipe.cookTime} minutes|"></p>
     </div>
-    <hr style="width:200px" align="left">
 </div>
 
 </body>
