@@ -112,17 +112,17 @@
                 <form th:action="@{/recipe/add}" method="POST" th:object="${recipe}">
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="recipeName" class="form-label">Recipe Name</label>
-                            <input type="text" class="form-control" id="recipeName" th:field="*{name}" required>
+                            <label for="recipeDisplayName" class="form-label">Recipe Name</label>
+                            <input type="text" class="form-control" id="recipeDisplayName" th:field="*{displayName}" required>
                         </div>
                         <div class="mb-3">
-                            <label for="recipeDescription" class="form-label">Short Description</label>
-                            <textarea class="form-control" id="recipeDescription" th:field="*{shortDescription}" required></textarea>
+                            <label for="recipeShortName" class="form-label">Give your recipe a name without spaces and capitals</label>
+                            <input type="text" class="form-control" id="recipeShortName" th:field="*{name}" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="recipeIngredients" class="form-label">Ingredients</label>
-                            <textarea class="form-control" id="recipeIngredients" th:field="*{ingredients}"></textarea>
-                        </div>
+<!--                        <div class="mb-3">-->
+<!--                            <label for="recipeIngredients" class="form-label">Ingredients</label>-->
+<!--                            <textarea class="form-control" id="recipeIngredients" th:field="*{ingredients}"></textarea>-->
+<!--                        </div>-->
 
                         <div class="mb-3">
                             <label for="recipeCookingSteps" class="form-label">Cooking Steps</label>
@@ -135,10 +135,6 @@
                         <div class="mb-3">
                             <label for="prepTime" class="form-label">Cooking Time</label>
                             <input type="text" class="form-control" id="cookTime" th:field="*{cookTime}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="instructions" class="form-label">Instructions</label>
-                            <textarea class="form-control" id="instructions" th:field="*{instructions}" required></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="recipeImage" class="form-label">Image URL</label>
