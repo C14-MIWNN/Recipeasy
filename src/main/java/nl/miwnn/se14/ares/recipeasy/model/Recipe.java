@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
+import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -17,25 +18,19 @@ public class Recipe {
     @GeneratedValue
     private Long id;
     private String title;
-    private String shortDescription;
-    private String prepTime;
-    private String instructions;
 
     @NotBlank
     @Column(unique = true)
     private String name;
+    private String displayName;
+    private int cookTime;
+    private String prepTime;
 
     @ManyToMany
     private Set<RecipeUser> likedByUserSet;
 
     @ManyToOne
     private RecipeUser recipeAuthor;
-
-    @Column
-    private String displayName;
-
-    @Column
-    private int cookTime;
 
     @ManyToMany
     private Set<Ingredient> ingredients;
@@ -119,28 +114,12 @@ public class Recipe {
         this.title = title;
     }
 
-    public String getShortDescription() {
-        return shortDescription;
-    }
-
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
-    }
-
     public String getPrepTime() {
         return prepTime;
     }
 
     public void setPrepTime(String prepTime) {
         this.prepTime = prepTime;
-    }
-
-    public String getInstructions() {
-        return instructions;
-    }
-
-    public void setInstructions(String instructions) {
-        this.instructions = instructions;
     }
 
     public String getImageUrl() {
