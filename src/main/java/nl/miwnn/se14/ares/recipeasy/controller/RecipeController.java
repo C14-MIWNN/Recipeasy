@@ -42,7 +42,7 @@ public class RecipeController {
         datamodel.addAttribute("formModalHidden", true);
         datamodel.addAttribute("searchForm", new Recipe());
         datamodel.addAttribute("recipe", new Recipe());
-
+        datamodel.addAttribute("allIngredients", ingredientRepository.findAll());
 
         return "homepage";
     }
@@ -64,7 +64,7 @@ public class RecipeController {
             BindingResult result,
             Model datamodel) {
 
-        Optional<List<Recipe>> searchResults = recipeRepository.findByNameContaining(recipe.getName());
+        Optional<List<Recipe>> searchResults = recipeRepository.findByDbNameContaining(recipe.getDbName());
 
         if (searchResults.isEmpty()) {
             result.rejectValue("name", "search.results.empty",
@@ -81,9 +81,9 @@ public class RecipeController {
 
     @GetMapping("/recipe/detail/{recipeName}")
     private String showRecipeDetailPage(@PathVariable("recipeName") String recipeName, Model datamodel) {
-        Optional<Recipe> recipe = recipeRepository.findByName(recipeName);
+        Optional<Recipe> recipe = recipeRepository.findByDbName(recipeName);
         if (recipe.isEmpty()) {
-            return "redirect:/recipe/overview";
+            return "redirect:/recipe/overviewnew";
         }
         datamodel.addAttribute("recipeToBeShown", recipe.get());
         return "recipeDetail";
@@ -93,11 +93,10 @@ public class RecipeController {
     public String addRecipe(@ModelAttribute Recipe recipe, Model model) {
         RecipeUser currentUser = (RecipeUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         recipe.setRecipeAuthor(currentUser);
+        recipe.setDbName(recipe.getTitle().toLowerCase().replace(" ", ""));
 
-        // Save the recipe
         recipeRepository.save(recipe);
 
-        // Optionally, add a success message
         model.addAttribute("message", "Recipe added successfully!");
         return "redirect:/"; // Redirect to homepage after adding the recipe
     }

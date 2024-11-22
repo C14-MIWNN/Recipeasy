@@ -17,14 +17,13 @@ public class Recipe {
     @Id
     @GeneratedValue
     private Long id;
-    private String title;
 
     @NotBlank
     @Column(unique = true)
-    private String name;
-    private String displayName;
+    private String dbName;
+    private String title;
     private int cookTime;
-    private String prepTime;
+    private int prepTime;
 
     @ManyToMany
     private Set<RecipeUser> likedByUserSet;
@@ -42,28 +41,21 @@ public class Recipe {
     private String imageUrl;
 
     // GETTERS AND SETTERS
-    public Long getId() {
-        return id;
+
+    public String getDbName() {
+        return dbName;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setDbName(String dbName) {
+        this.dbName = dbName;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getCookTime() {
@@ -74,20 +66,12 @@ public class Recipe {
         this.cookTime = cookTime;
     }
 
-    public Set<Ingredient> getIngredients() {
-        return ingredients;
+    public int getPrepTime() {
+        return prepTime;
     }
 
-    public void setIngredients(Set<Ingredient> ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public String getCookingSteps() {
-        return cookingSteps;
-    }
-
-    public void setCookingSteps(String cookingSteps) {
-        this.cookingSteps = cookingSteps;
+    public void setPrepTime(int prepTime) {
+        this.prepTime = prepTime;
     }
 
     public Set<RecipeUser> getLikedByUserSet() {
@@ -106,20 +90,20 @@ public class Recipe {
         this.recipeAuthor = recipeAuthor;
     }
 
-    public String getTitle() {
-        return title;
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 
-    public String getPrepTime() {
-        return prepTime;
+    public String getCookingSteps() {
+        return cookingSteps;
     }
 
-    public void setPrepTime(String prepTime) {
-        this.prepTime = prepTime;
+    public void setCookingSteps(String cookingSteps) {
+        this.cookingSteps = cookingSteps;
     }
 
     public String getImageUrl() {

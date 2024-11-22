@@ -53,15 +53,15 @@ public class RecipeUserController {
         return "userProfile";
     }
 
-
-    @GetMapping("/overview")
-    private String showUserOverview(Model datamodel) {
-        datamodel.addAttribute("allUsers", recipeUserService.getAllUsers());
-        datamodel.addAttribute("formUser", new RecipeUserDTO());
-        datamodel.addAttribute("formModalHidden", true);
-
-        return "userOverview";
-    }
+//      We might use this later if we want to give Admins the ability to see a list of registered users
+//    @GetMapping("/overview")
+//    private String showUserOverview(Model datamodel) {
+//        datamodel.addAttribute("allUsers", recipeUserService.getAllUsers());
+//        datamodel.addAttribute("formUser", new RecipeUserDTO());
+//        datamodel.addAttribute("formModalHidden", true);
+//
+//        return "userOverview";
+//    }
 
     @PostMapping("/save")
     private String saveOrUpdateUser(@ModelAttribute("formUser") @Valid RecipeUserDTO userDtoToBeSaved, BindingResult result,
