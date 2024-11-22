@@ -12,21 +12,31 @@
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
 
 </head>
-<body>
+<body class="custom-background">
 <div th:replace="~{fragments/general :: navbar}">
 </div>
+<div>
 <h1>Welcome to Recipeasy! Register to get the easiest recipes</h1>
-
-
-        <button type="button"
-                class="btn btn-primary"
-                data-bs-toggle="modal" data-bs-target="#newForm">add user
+    <div class="card mt-4">
+        <div class="card-body">
+            <p><h3>Become a member</h3> We would like you to use a unique username and password for unique recipes!<br>
+            You are able to add and save recipes with your account</p>
+            <button type="button"
+                    class="btn btn-secondary"
+                    data-bs-toggle="modal" data-bs-target="#newForm">Register
         </button>
+        </div>
+    </div>
+
+
+
 
 </div>
 </body>
 
-<div th:replace="~{fragments/recipeasyUser :: newUserForm(${formUser}, ${#fields})}"></div>
+<!--<div th:replace="~{fragments/recipeasyUser :: newUserForm(${formUser}, ${#fields})}"></div>-->
+<div th:replace="~{fragments/recipeasyUser :: userFormModal(${formUser}, ${#fields})}"></div>
+
 <div th:replace="~{fragments/general :: footer}"></div>
 
 </html>
