@@ -1,16 +1,12 @@
 package nl.miwnn.se14.ares.recipeasy.controller;
 
-import jakarta.validation.Valid;
 import nl.miwnn.se14.ares.recipeasy.dto.RecipeUserDTO;
-import nl.miwnn.se14.ares.recipeasy.model.Ingredient;
 import nl.miwnn.se14.ares.recipeasy.model.Recipe;
 import nl.miwnn.se14.ares.recipeasy.model.RecipeUser;
 import nl.miwnn.se14.ares.recipeasy.repositories.IngredientRepository;
 import nl.miwnn.se14.ares.recipeasy.repositories.RecipeRepository;
 import nl.miwnn.se14.ares.recipeasy.repositories.RecipeUserRepository;
-import nl.miwnn.se14.ares.recipeasy.service.mapper.RecipeUserMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
