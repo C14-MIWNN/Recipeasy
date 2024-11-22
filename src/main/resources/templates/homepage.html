@@ -121,7 +121,6 @@
                         </div>
                         <div class="mb-3">
                             <label for="recipeIngredients" class="form-label">Ingredients</label>
-                            <input type="text" name="ingredients" placeholder="Ingredient 1">
                             <textarea class="form-control" id="recipeIngredients" th:field="*{ingredients}"></textarea>
                         </div>
 
@@ -132,6 +131,10 @@
                         <div class="mb-3">
                             <label for="prepTime" class="form-label">Preparation Time</label>
                             <input type="text" class="form-control" id="prepTime" th:field="*{prepTime}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="prepTime" class="form-label">Cooking Time</label>
+                            <input type="text" class="form-control" id="cookTime" th:field="*{cookTime}">
                         </div>
                         <div class="mb-3">
                             <label for="instructions" class="form-label">Instructions</label>
