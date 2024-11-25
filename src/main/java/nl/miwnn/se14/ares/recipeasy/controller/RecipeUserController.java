@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import nl.miwnn.se14.ares.recipeasy.dto.RecipeUserDTO;
 import nl.miwnn.se14.ares.recipeasy.model.Recipe;
 import nl.miwnn.se14.ares.recipeasy.model.RecipeUser;
+import nl.miwnn.se14.ares.recipeasy.repositories.IngredientRepository;
 import nl.miwnn.se14.ares.recipeasy.repositories.RecipeRepository;
 import nl.miwnn.se14.ares.recipeasy.repositories.RecipeUserRepository;
 import nl.miwnn.se14.ares.recipeasy.service.RecipeUserService;
@@ -27,11 +28,13 @@ public class RecipeUserController {
     private final RecipeUserService recipeUserService;
     private final RecipeUserRepository recipeUserRepository;
     private final RecipeRepository recipeRepository;
+    private final IngredientRepository ingredientRepository;
 
-    public RecipeUserController(RecipeUserService recipeUserService, RecipeUserRepository recipeUserRepository, RecipeRepository recipeRepository) {
+    public RecipeUserController(RecipeUserService recipeUserService, RecipeUserRepository recipeUserRepository, RecipeRepository recipeRepository, IngredientRepository ingredientRepository) {
         this.recipeUserService = recipeUserService;
         this.recipeUserRepository = recipeUserRepository;
         this.recipeRepository = recipeRepository;
+        this.ingredientRepository = ingredientRepository;
     }
 
     @GetMapping("/profile")
@@ -42,7 +45,13 @@ public class RecipeUserController {
         List<Recipe> userRecipes = List.of();
         datamodel.addAttribute("userRecipes", userRecipes);
         datamodel.addAttribute("newRecipe", new Recipe());
-        
+        datamodel.addAttribute("formRecipe", new Recipe());
+        datamodel.addAttribute("formUser", new RecipeUserDTO());
+        datamodel.addAttribute("formModalHidden", true);
+        datamodel.addAttribute("searchForm", new Recipe());
+        datamodel.addAttribute("recipe", new Recipe());
+        datamodel.addAttribute("allIngredients", ingredientRepository.findAll());
+
         RecipeUser recipeAuthor = recipeUserRepository.findByUsername(currentUser.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 

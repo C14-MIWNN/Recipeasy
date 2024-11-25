@@ -10,10 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -90,14 +87,24 @@ public class RecipeController {
     }
 
     @PostMapping("/recipe/add")
-    public String addRecipe(@ModelAttribute Recipe recipe, Model model) {
+    public String addRecipe(@ModelAttribute Recipe recipe, BindingResult bindingResult, Model datamodel) {
         RecipeUser currentUser = (RecipeUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         recipe.setRecipeAuthor(currentUser);
         recipe.setDbName(recipe.getTitle().toLowerCase().replace(" ", ""));
+        datamodel.addAttribute("recipe", recipe);
+        datamodel.addAttribute("user", currentUser);
+        datamodel.addAttribute("formUser", new RecipeUserDTO());
+        datamodel.addAttribute("formModalHidden", true);
+        datamodel.addAttribute("searchForm", new Recipe());
+        datamodel.addAttribute("recipe", new Recipe());
+        if (bindingResult.hasErrors()) {
+            datamodel.addAttribute("formRecipe", recipe);
+            return "userProfile";  // Return to the same page to display errors
+        }
 
         recipeRepository.save(recipe);
 
-        model.addAttribute("message", "Recipe added successfully!");
+        datamodel.addAttribute("message", "Recipe added successfully!");
         return "redirect:/"; // Redirect to homepage after adding the recipe
     }
 
