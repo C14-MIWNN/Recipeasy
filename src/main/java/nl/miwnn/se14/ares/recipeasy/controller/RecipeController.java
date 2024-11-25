@@ -1,6 +1,7 @@
 package nl.miwnn.se14.ares.recipeasy.controller;
 
 import nl.miwnn.se14.ares.recipeasy.dto.RecipeUserDTO;
+import nl.miwnn.se14.ares.recipeasy.model.CuisineType;
 import nl.miwnn.se14.ares.recipeasy.model.Recipe;
 import nl.miwnn.se14.ares.recipeasy.model.RecipeUser;
 import nl.miwnn.se14.ares.recipeasy.repositories.IngredientRepository;
@@ -36,8 +37,8 @@ public class RecipeController {
 
     @GetMapping("/")
     private String showHomepage(Model datamodel) {
-        List<String> cuisines = Arrays.asList("Italian", "Mexican", "Japanese", "Indian", "French", "All");
-        datamodel.addAttribute("cuisines", cuisines);
+        List<String> cuisineTypes = Arrays.asList("Italian", "Mexican", "Japanese", "Indian", "French", "All");
+        datamodel.addAttribute("cuisineTypes", cuisineTypes);
         datamodel.addAttribute("formUser", new RecipeUserDTO());
         datamodel.addAttribute("formModalHidden", true);
         datamodel.addAttribute("searchForm", new Recipe());
@@ -48,14 +49,28 @@ public class RecipeController {
     }
 
     @GetMapping("/recipe/overview")
-    private String showRecipeOverview() {
+    private String showRecipeOverview(Model datamodel) {
+        datamodel.addAttribute("allRecipes", recipeRepository.findAll());
         return "recipeOverview";
     }
 
-    @GetMapping("/recipe/overviewnew")
-    private String showRecipeOverviewNew(Model datamodel) {
-        datamodel.addAttribute("allRecipes", recipeRepository.findAll());
-        return "recipeOverviewNew";
+    @GetMapping("/recipe/overview/{cuisine}")
+    private String showRecipesByCuisineType(@PathVariable("cuisine") CuisineType cuisineType,
+                                            BindingResult result,
+                                            Model datamodel) {
+        Optional<List<Recipe>> searchResults = recipeRepository.findByCuisineType(cuisineType);
+
+        if (searchResults.isEmpty()) {
+            result.rejectValue("name", "search.results.empty",
+                    "We found no recipes with your search term. Try a different search term, or maybe you would like to add this recipe yourself!");
+        }
+
+        if (result.hasErrors()) {
+            return "homepage";
+        }
+
+        datamodel.addAttribute("allRecipes", searchResults.get()) ;
+        return "recipeOverview";
     }
 
     @PostMapping("/search")
@@ -68,7 +83,7 @@ public class RecipeController {
 
         if (searchResults.isEmpty()) {
             result.rejectValue("name", "search.results.empty",
-                    "We found no recipes with your search term. Try a different search term, or maybe add this recipe yourself!");
+                    "We found no recipes with your search term. Try a different search term, or maybe you would like to add this recipe yourself!");
         }
 
         if (result.hasErrors()) {
@@ -76,14 +91,14 @@ public class RecipeController {
         }
 
         datamodel.addAttribute("allRecipes", searchResults.get());
-        return "recipeOverviewNew";
+        return "recipeOverview";
     }
 
     @GetMapping("/recipe/detail/{recipeName}")
     private String showRecipeDetailPage(@PathVariable("recipeName") String recipeName, Model datamodel) {
         Optional<Recipe> recipe = recipeRepository.findByDbName(recipeName);
         if (recipe.isEmpty()) {
-            return "redirect:/recipe/overviewnew";
+            return "redirect:/recipe/overview";
         }
         datamodel.addAttribute("recipeToBeShown", recipe.get());
         return "recipeDetail";
@@ -93,13 +108,15 @@ public class RecipeController {
     public String addRecipe(@ModelAttribute Recipe recipe, Model model) {
         RecipeUser currentUser = (RecipeUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         recipe.setRecipeAuthor(currentUser);
-        recipe.setDbName(recipe.getTitle().toLowerCase().replace(" ", ""));
+        recipe.setDbName(turnRecipeTitleIntoDbName(recipe.getTitle()));
 
         recipeRepository.save(recipe);
 
         model.addAttribute("message", "Recipe added successfully!");
-        return "redirect:/"; // Redirect to homepage after adding the recipe
+        return "redirect:/recipe/overview";
     }
 
-
+    public String turnRecipeTitleIntoDbName(String title) {
+        return title.toLowerCase().replace(" ", "_");
+    }
 }

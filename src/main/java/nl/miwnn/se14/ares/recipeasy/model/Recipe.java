@@ -40,6 +40,8 @@ public class Recipe {
 
     private String imageUrl;
 
+    private CuisineType cuisineType;
+
     // GETTERS AND SETTERS
 
     public String getDbName() {
@@ -112,6 +114,14 @@ public class Recipe {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public CuisineType getCuisineType() {
+        return cuisineType;
+    }
+
+    public void setCuisineType(CuisineType cuisineType) {
+        this.cuisineType = cuisineType;
     }
 }
 
