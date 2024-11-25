@@ -19,8 +19,8 @@
         <nav class="navbar" style="margin-bottom:60px">
             <div class="container-fluid d-flex justify-content-center">
                 <ul class="nav row row-cols-6 text-center">
-                    <li class="nav-item col mb-3" th:each="cuisine : ${cuisines}">
-                        <a th:href="@{/recipes/cuisine/{cuisine}(cuisine=${cuisine})}" class="nav-link text-black">
+                    <li class="nav-item col mb-3" th:each="cuisine : ${cuisineTypes}">
+                        <a th:href="@{/recipes/overview/{cuisine}(cuisine=${cuisine})}" class="nav-link text-black">
                             <span th:if="${cuisine == 'Italian'}" class="mdi mdi-pizza" style="font-size: 2em;"></span>
                             <span th:if="${cuisine == 'Mexican'}" class="mdi mdi-chili-hot" style="font-size: 2em;"></span>
                             <span th:if="${cuisine == 'Japanese'}" class="mdi mdi-fish" style="font-size: 2em;"></span>
