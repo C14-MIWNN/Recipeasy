@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author Johannes
- * Purpose for the class
+ * Tests to check if our code does what it is supposed to do
  */
 public class RecipeControllerTests {
 
@@ -515,7 +515,10 @@ public class RecipeControllerTests {
             }
         };
 
-        RecipeController recipeController = new RecipeController(recipeRepository, ingredientRepository, recipeUserRepository);
+        RecipeController recipeController = new RecipeController(
+                recipeRepository,
+                ingredientRepository,
+                recipeUserRepository);
 
         // Act
         String dbName = recipeController.turnRecipeTitleIntoDbName("stamppot boerenkool met worst");
@@ -1012,7 +1015,10 @@ public class RecipeControllerTests {
             }
         };
 
-        RecipeController recipeController = new RecipeController(recipeRepository, ingredientRepository, recipeUserRepository);
+        RecipeController recipeController = new RecipeController(
+                recipeRepository,
+                ingredientRepository,
+                recipeUserRepository);
 
         // Act
         String dbName = recipeController.turnRecipeTitleIntoDbName("Macaroni");
