@@ -20,22 +20,20 @@
     <div class="card mt-4">
         <div class="card-body">
             <p><h3>Become a member</h3> We would like you to use a unique username and password for unique recipes!<br>
-            You are able to add and save recipes with your account</p>
+            You are able to add and save recipes with your account
             <button type="button"
                     class="btn btn-secondary"
                     data-bs-toggle="modal" data-bs-target="#newForm">Register
-        </button>
+            </button>
         </div>
     </div>
-
-
-
 
 </div>
 </body>
 
-<!--<div th:replace="~{fragments/recipeasyUser :: newUserForm(${formUser}, ${#fields})}"></div>-->
 <div th:replace="~{fragments/recipeasyUser :: userFormModal(${formUser}, ${#fields})}"></div>
+<!--<div th:replace="~{fragments/recipeasyUser :: recipeFormModal(${newRecipe}, ${#fields})}"></div>-->
+
 
 <div th:replace="~{fragments/general :: footer}"></div>
 
