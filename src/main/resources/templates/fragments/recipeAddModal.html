@@ -16,7 +16,8 @@
       </div>
     </div>
     <div class="mb-3">
-      <label for="recipeIngredients" class="form-label">Ingredients</label>
+      <label for="recipeIngredients" class="form-label">
+        Add multiple ingredients by pressing Ctrl (or CMD on Mac) and clicking the ingredients you want to add</label>
       <select class="form-control" id="recipeIngredients" size= 5 th:field="*{ingredients}" multiple>
         <option th:each="ingredientOption : ${allIngredients}"
                 th:text="${ingredientOption.name}"
@@ -36,12 +37,13 @@
       <input type="text" class="form-control" id="cookTime" th:field="*{cookTime}">
     </div>
     <div class="mb-3">
-      <label for="recipeImage" class="form-label">Image URL</label>
+      <label for="recipeImage" class="form-label">
+        Optional: you can add an image to the recipe by pasting a link to the image</label>
       <input type="text" class="form-control" id="recipeImage" th:field="*{imageUrl}">
     </div>
 
     <button type="submit" class="btn bi-plus-square btn-custom mb-3"> Save recipe</button>
-    <button type="button" class="btn btn-custom-delete bi-file-excel" data-bs-dismiss="modal" aria-label="Close"> Close</button>
+    <button type="button" class="btn btn-custom-delete bi-file-excel" data-bs-dismiss="modal" aria-label="Cancel"> Cancel</button>
 
   </form>
 </div>
