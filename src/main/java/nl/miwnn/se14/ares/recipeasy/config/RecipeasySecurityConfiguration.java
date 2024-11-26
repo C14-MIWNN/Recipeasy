@@ -23,6 +23,7 @@ public class RecipeasySecurityConfiguration {
         httpSecurity
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/", "/recipe/overview").permitAll()
+                        .requestMatchers("/user/register", "user/save").permitAll()
                         .requestMatchers("/webjars/**", "/css/**").permitAll()
                         .anyRequest().authenticated()
                 )
@@ -30,13 +31,10 @@ public class RecipeasySecurityConfiguration {
                 .logout((logout) -> logout.logoutSuccessUrl("/").permitAll());
 
         return httpSecurity.build();
-
-
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 }
