@@ -1,43 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:border-radius="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org" >
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"  >
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.min.css}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 
     <title>Recipeasy</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 
 <body>
 <div th:replace="~{fragments/general :: navbar}"></div>
 
 <main class="homepage">
-    <nav class="navbar" style="margin-bottom:60px">
-        <div class="container-fluid d-flex justify-content-center">
-            <ul class="nav row row-cols-6 text-center">
-                <li class="nav-item col mb-3" th:each="cuisine : ${cuisineTypes}">
-                    <a th:href="@{/recipes/overview/{cuisine}(cuisine=${cuisine})}" class="nav-link text-black">
-                        <span th:if="${cuisine == 'Italian'}" class="mdi mdi-pizza" style="font-size: 2em;"></span>
-                        <span th:if="${cuisine == 'Mexican'}" class="mdi mdi-chili-hot" style="font-size: 2em;"></span>
-                        <span th:if="${cuisine == 'Japanese'}" class="mdi mdi-fish" style="font-size: 2em;"></span>
-                        <span th:if="${cuisine == 'Indian'}" class="mdi mdi-rice" style="font-size: 2em;"></span>
-                        <span th:if="${cuisine == 'French'}" class="mdi mdi-cheese" style="font-size: 2em;"></span>
-                        <span th:if="${cuisine == 'All'}" class="mdi mdi-food fa-2x" style="font-size: 2em;"></span>
-                        <!-- Default icon if no match -->
-<!--                        <span th:if="${cuisine != 'Italian' && cuisine != 'Mexican' && cuisine != 'Japanese' && cuisine != 'Indian' && cuisine != 'French'}"-->
-<!--                              class="mdi mdi-food fa-2x"></span>-->
-                        <br>
-                        <span th:text="${cuisine}">Cuisine</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+
 
         <div class="search-container">
             <form th:action="@{/search}" method="post" th:object="${searchForm}" >
@@ -48,119 +29,7 @@
 
         <div th:replace="~{fragments/recipe :: recipeCards(${randomRecipes})}"></div>
 
-<!--    <div class="container mt-2">-->
-<!--        <div class="row g-3">-->
-<!--            &lt;!&ndash; Card 1 &ndash;&gt;-->
-<!--            <div class="col-12 col-md-3 col-lg-3">-->
-<!--                <div class="card" style="width: 100%; height: 350px;">-->
-<!--                    <img class="card-img-top" src="/Food_pics/chicken.jpg"-->
-<!--                         alt="Card image"-->
-<!--                         style="width: 100%; height: 200px; object-fit: cover;">-->
-<!--                    <div class="card-body p-3">-->
-<!--                        <h5 class="card-title" style="font-size: 0.9em;">Oven baked chicken</h5>-->
-<!--                        <p class="card-text" style="font-size: 0.7em;">Some example text. Very yummy.</p>-->
-<!--                        <a href="#" class="btn btn-primary">See Recipe</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
 
-<!--            &lt;!&ndash; Card 2 &ndash;&gt;-->
-<!--            <div class="col-12 col-md-3 col-lg-3">-->
-<!--                <div class="card" style="width: 100%; height: 350px;">-->
-<!--                    <img class="card-img-top" src="/Food_pics/pizza.jpg"-->
-<!--                         alt="Card image"-->
-<!--                         style="width: 100%; height: 200px; object-fit: cover;">-->
-<!--                    <div class="card-body p-3">-->
-<!--                        <h5 class="card-title" style="font-size: 0.9em;">Pizza Italian style</h5>-->
-<!--                        <p class="card-text" style="font-size: 0.7em;">Real pizza. Very yummy.</p>-->
-<!--                        <a href="#" class="btn btn-primary">See Recipe</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            &lt;!&ndash; Card 3 &ndash;&gt;-->
-<!--            <div class="col-12 col-md-3 col-lg-3">-->
-<!--                <div class="card" style="width: 100%; height: 350px;">-->
-<!--                    <img class="card-img-top" src="/Food_pics/steak.jpg"-->
-<!--                         alt="Card image"-->
-<!--                         style="width: 100%; height: 200px; object-fit: cover;">-->
-<!--                    <div class="card-body p-3">-->
-<!--                        <h5 class="card-title" style="font-size: 0.9em;">Juicy Steak</h5>-->
-<!--                        <p class="card-text" style="font-size: 0.7em;">Very yummy.</p>-->
-<!--                        <a href="#" class="btn btn-primary">See Recipe</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            &lt;!&ndash; Card 4 &ndash;&gt;-->
-<!--            <div class="col-12 col-md-3 col-lg-3">-->
-<!--                <div class="card" style="width: 100%; height: 350px;">-->
-<!--                    <img class="card-img-top" src="/Food_pics/stir-fry.png"-->
-<!--                         alt="Card image"-->
-<!--                         style="width: 100%; height: 200px; object-fit: cover;">-->
-<!--                    <div class="card-body p-3">-->
-<!--                        <h5 class="card-title" style="font-size: 0.9em;">Stir fry</h5>-->
-<!--                        <p class="card-text" style="font-size: 0.7em;">Finger licking good.</p>-->
-<!--                        <a href="#" class="btn btn-primary">See Recipe</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--    </div>-->
-
-        <div class="modal fade" id="recipeModal1" tabindex="-1" aria-labelledby="recipeModalLabel1" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="recipeModalLabel1">Add New Recipe</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form th:action="@{/recipe/add}" method="POST" th:object="${recipe}">
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="recipeTitle" class="form-label">Recipe Name</label>
-                                <input type="text" class="form-control" id="recipeTitle" th:field="*{title}" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="recipeIngredients" class="form-label">Ingredients</label>
-                                <select class="form-control"
-                                        id="recipeIngredients"
-                                        size= 5
-                                        th:field="*{ingredients}" multiple>
-                                    <option th:each="ingredientOption : ${allIngredients}"
-                                            th:text="${ingredientOption.name}"
-                                            th:value="${ingredientOption.id}"></option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="recipeCookingSteps" class="form-label">Cooking Steps</label>
-                                <textarea class="form-control"
-                                          id="recipeCookingSteps"
-                                          th:field="*{cookingSteps}" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="prepTime" class="form-label">Preparation Time (minutes)</label>
-                                <input type="text" class="form-control" id="prepTime" th:field="*{prepTime}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="prepTime" class="form-label">Cooking Time (minutes)</label>
-                                <input type="text" class="form-control" id="cookTime" th:field="*{cookTime}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="recipeImage" class="form-label">Image URL</label>
-                                <input type="text" class="form-control" id="recipeImage" th:field="*{imageUrl}">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-secondary">Save Recipe</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
 
         <script th:unless="${formModalHidden}">
             new bootstrap.Modal(document.getElementById('newRecipe'), {}).toggle()

@@ -17,13 +17,12 @@
     <div class="brand-container">
       <a href="/" class="navbar-brand">
         <img src="/Recipeasy_logo.webp" alt="Recipe Logo" class="logo-img">
-        <span class="logo-text">Recipeasy</span>
       </a>
+      <span class="logo-text">Recipeasy</span>
     </div>
 
     <div class="middle-container">
-      <a href="/" class="navbar-brand">
-      <h1>Cooking has never been this easy!</h1></a>
+      <a href="/" class="navbar-brand">Cooking has never been this easy!</a>
     </div>
 
     <!-- Button Section -->
@@ -31,12 +30,19 @@
       <a th:href="@{/user/profile}" class="profile-icon m-3">
         <span class="mdi mdi-account-circle"></span>
       </a>
-      <a class="btn btn-outline-primary btn-md my-2" th:href="@{/user/register}">Make an account</a>
-      <a class="btn btn-outline-primary btn-md my-2" th:href="@{/login}" sec:authorize="isAnonymous()">Login</a>
-      <a class="btn btn-outline-danger btn-md my-2" th:href="@{/logout}" sec:authorize="hasRole('ROLE_USER')">Logout</a>
-      <button type="button" class="btn btn-outline-success btn-md px-3 fw-semibold my-2" data-bs-toggle="modal" data-bs-target="#newRecipe">
-        <i class="bi bi-plus-square"></i> Add recipe
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+        Dropdown button
       </button>
+      <ul class="dropdown-menu">
+        <li>       <a class="btn btn-outline-primary btn-md my-2" th:href="@{/user/register}">Make an account</a></li>
+        <li> <a class="btn btn-outline-primary btn-md my-2" th:href="@{/login}" sec:authorize="isAnonymous()">Login</a></li>
+        <li><a class="btn btn-outline-danger btn-md my-2" th:href="@{/logout}" sec:authorize="hasRole('ROLE_USER')">Logout</a></li>
+        <li><a class="btn btn-outline-success btn-md px-3 fw-semibold my-2" data-bs-toggle="modal" data-bs-target="#newRecipe">Add recipe</a></li>
+      </ul>
+
+      </div>
+
     </div>
   </div>
 </div>
@@ -53,7 +59,7 @@
 <div th:fragment="bottomScripts">
   <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
   <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-  <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </div>
 
 
