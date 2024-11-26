@@ -22,8 +22,8 @@ public class Recipe {
     @Column(unique = true)
     private String dbName;
     private String title;
-    private int cookTime;
-    private int prepTime;
+    private Integer cookTime;
+    private Integer prepTime;
 
     @ManyToMany
     private Set<RecipeUser> likedByUserSet;
@@ -60,19 +60,19 @@ public class Recipe {
         this.title = title;
     }
 
-    public int getCookTime() {
+    public Integer getCookTime() {
         return cookTime;
     }
 
-    public void setCookTime(int cookTime) {
+    public void setCookTime(Integer cookTime) {
         this.cookTime = cookTime;
     }
 
-    public int getPrepTime() {
+    public Integer getPrepTime() {
         return prepTime;
     }
 
-    public void setPrepTime(int prepTime) {
+    public void setPrepTime(Integer prepTime) {
         this.prepTime = prepTime;
     }
 
