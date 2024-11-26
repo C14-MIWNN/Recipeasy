@@ -3,7 +3,7 @@
 <body>
 
 <div th:fragment="newRecipeForm(formRecipe, #fields)">
-  <form class="row g-3" th:action="@{/recipe/save}" method="post" th:object="${formRecipe}">
+  <form class="row g-3" th:action="@{/recipe/add}" method="post" th:object="${formRecipe}">
     <div class="row g-3 align-items-center">
       <div class="col-3">
         <label for="title" class="col-form-label">name</label>

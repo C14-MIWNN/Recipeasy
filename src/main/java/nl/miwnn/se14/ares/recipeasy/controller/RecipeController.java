@@ -1,6 +1,7 @@
 package nl.miwnn.se14.ares.recipeasy.controller;
 
 import nl.miwnn.se14.ares.recipeasy.dto.RecipeUserDTO;
+import nl.miwnn.se14.ares.recipeasy.model.CuisineType;
 import nl.miwnn.se14.ares.recipeasy.model.Recipe;
 import nl.miwnn.se14.ares.recipeasy.model.RecipeUser;
 import nl.miwnn.se14.ares.recipeasy.model.CuisineType;
@@ -42,6 +43,8 @@ public class RecipeController {
         datamodel.addAttribute("formModalHidden", true);
         datamodel.addAttribute("searchForm", new Recipe());
         datamodel.addAttribute("recipe", new Recipe());
+        datamodel.addAttribute("formRecipe", new Recipe());
+        datamodel.addAttribute("newRecipe", new Recipe());
         datamodel.addAttribute("allIngredients", ingredientRepository.findAll());
         datamodel.addAttribute("allRecipes", recipeRepository.findAll());
 
