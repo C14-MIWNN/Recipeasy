@@ -43,6 +43,11 @@ public class RecipeController {
         datamodel.addAttribute("searchForm", new Recipe());
         datamodel.addAttribute("recipe", new Recipe());
         datamodel.addAttribute("allIngredients", ingredientRepository.findAll());
+        datamodel.addAttribute("allRecipes", recipeRepository.findAll());
+
+        List<Recipe> randomRecipes = getRandomRecipes(3);
+
+        datamodel.addAttribute("randomRecipes", randomRecipes);
 
         return "homepage";
     }
@@ -130,4 +135,16 @@ public class RecipeController {
     public String turnRecipeTitleIntoDbName(String title) {
         return title.toLowerCase().replace(" ", "_");
     }
+
+    public List<Recipe> getRandomRecipes(int numberOfRecipes) {
+        List<Recipe> allRecipes = recipeRepository.findAll();
+        Collections.shuffle(allRecipes);
+        ArrayList<Recipe> randomRecipes = new ArrayList<>();
+
+        for (int recipeIndex = 0; recipeIndex < numberOfRecipes; recipeIndex++) {
+            randomRecipes.add(allRecipes.get(recipeIndex));
+        }
+        return randomRecipes;
+    }
+
 }
