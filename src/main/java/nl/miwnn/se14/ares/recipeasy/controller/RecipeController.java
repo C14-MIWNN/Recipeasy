@@ -3,6 +3,7 @@ package nl.miwnn.se14.ares.recipeasy.controller;
 import nl.miwnn.se14.ares.recipeasy.dto.RecipeUserDTO;
 import nl.miwnn.se14.ares.recipeasy.model.Recipe;
 import nl.miwnn.se14.ares.recipeasy.model.RecipeUser;
+import nl.miwnn.se14.ares.recipeasy.model.CuisineType;
 import nl.miwnn.se14.ares.recipeasy.repositories.IngredientRepository;
 import nl.miwnn.se14.ares.recipeasy.repositories.RecipeRepository;
 import nl.miwnn.se14.ares.recipeasy.repositories.RecipeUserRepository;
@@ -25,7 +26,9 @@ public class RecipeController {
     private final IngredientRepository ingredientRepository;
     private final RecipeUserRepository recipeUserRepository;
 
-    public RecipeController(RecipeRepository recipeRepository, IngredientRepository ingredientRepository, RecipeUserRepository recipeUserRepository) {
+    public RecipeController(RecipeRepository recipeRepository,
+                            IngredientRepository ingredientRepository,
+                            RecipeUserRepository recipeUserRepository) {
         this.recipeRepository = recipeRepository;
         this.ingredientRepository = ingredientRepository;
         this.recipeUserRepository = recipeUserRepository;
@@ -58,7 +61,8 @@ public class RecipeController {
 
         if (searchResults.isEmpty()) {
             result.rejectValue("name", "search.results.empty",
-                    "We found no recipes with your search term. Try a different search term, or maybe you would like to add this recipe yourself!");
+                    "Our site appears to have no recipes from this cuisine. " +
+                            "Maybe you can add a recipe from this cuisine!");
         }
 
         if (result.hasErrors()) {
@@ -78,8 +82,9 @@ public class RecipeController {
         Optional<List<Recipe>> searchResults = recipeRepository.findByDbNameContaining(recipe.getDbName());
 
         if (searchResults.isEmpty()) {
-            result.rejectValue("name", "search.results.empty",
-                    "We found no recipes with your search term. Try a different search term, or maybe you would like to add this recipe yourself!");
+            result.rejectValue("dbName", "search.results.empty",
+                    "We found no recipes with your search term. " +
+                            "Try a different search term, or maybe you would like to add this recipe yourself!");
         }
 
         if (result.hasErrors()) {
