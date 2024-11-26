@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+header {
+    background-color: #f8f9fa;
+}
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -164,7 +168,6 @@ h1 {
     margin: 0;
 }
 
-
 .card {
     box-shadow: 10px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 30px 30px 30px 30px;
@@ -172,7 +175,7 @@ h1 {
 }
 
 .card-title {
-    font-size: 0.7em;
+    font-size: 1em;
     font-weight: 600;
     color: #333;
 }
