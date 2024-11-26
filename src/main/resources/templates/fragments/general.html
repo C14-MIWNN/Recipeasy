@@ -35,10 +35,13 @@
         Dropdown button
       </button>
       <ul class="dropdown-menu">
-        <li>       <a class="btn btn-outline-primary btn-md my-2" th:href="@{/user/register}">Make an account</a></li>
-        <li> <a class="btn btn-outline-primary btn-md my-2" th:href="@{/login}" sec:authorize="isAnonymous()">Login</a></li>
+        <li><a class="btn btn-outline-primary btn-md my-2" th:href="@{/user/register}">Make an account</a></li>
+        <li><a class="btn btn-outline-primary btn-md my-2" th:href="@{/login}" sec:authorize="isAnonymous()">Login</a></li>
         <li><a class="btn btn-outline-danger btn-md my-2" th:href="@{/logout}" sec:authorize="hasRole('ROLE_USER')">Logout</a></li>
-        <li><a class="btn btn-outline-success btn-md px-3 fw-semibold my-2" data-bs-toggle="modal" data-bs-target="#newRecipe">Add recipe</a></li>
+        <li><a class="btn btn-outline-success btn-md px-3 fw-semibold my-2"
+               data-bs-toggle="modal"
+               data-bs-target="#newRecipe"
+               sec:authorize="hasRole('ROLE_USER')">Add recipe</a></li>
       </ul>
 
       </div>
