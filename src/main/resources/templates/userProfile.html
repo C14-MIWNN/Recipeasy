@@ -16,31 +16,39 @@
 </div>
 
 <div class="container mt-5">
-<!--    <h1>Welcome, <span th:text="${user.username}">Guest</span>!</h1>-->
+    <h1>Welcome, <span th:text="${user.username}">Guest</span>!</h1>
 
     <div class="card mt-4">
         <div class="card-body">
             <h3>Your Profile Information</h3>
-<!--            <p><strong>Username:</strong> <span th:text="${user.username}"></span></p>-->
         </div>
     </div>
 
     <div class="mt-4">
-        <h3>Save a Recipe</h3>
-
+        <h3>Favourite recipes</h3>
         <p>Feature coming soon!</p>
+
         <div class="mt-4">
             <h3>Your Recipes</h3>
+            <p>Feature coming soon!</p>
             <div th:each="recipe : ${userRecipes}">
-                <p th:text="${recipe.name}">Recipe Name</p>
+                <p th:text="${recipe.dbName}">Recipe Name</p>
                 <p th:text="${recipe.cookTime}">Cook Time</p>
-                <!-- Add more recipe details as needed -->
             </div>
         </div>
+ <button type="button"
+           class="btn btn-outline-success btn-lg px-4 fw-bold position-absolute top-0 end-0 m-2"
+data-bs-toggle="modal" data-bs-target="#newRecipe">
+           <i class="bi bi-plus-square"></i> Add recipe
+     </button>
     </div>
 </div>
 
+<div th:replace="~{fragments/recipeAddModal :: recipeFormModal(${newRecipe}, ${#fields})}"></div>
+
 <div th:replace="~{fragments/general :: footer}"></div>
+<div th:replace="~{fragments/general :: bottomScripts}"></div>
+
 
 
 </body>
