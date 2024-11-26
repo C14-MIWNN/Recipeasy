@@ -91,6 +91,8 @@ public class RecipeUserController {
             return "homepage";
         }
 
+        userDtoToBeSaved.setRole("USER");
+
         recipeUserService.save(userDtoToBeSaved);
         return "redirect:/";
     }

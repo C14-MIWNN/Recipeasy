@@ -13,6 +13,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Controller;
 
+import javax.management.relation.Role;
 import java.util.*;
 
 /**
@@ -41,7 +42,7 @@ public class InitializeController {
     }
 
     private void initializeDB() {
-        makeRecipeUser("Admin", "Admin");
+        makeRecipeUser("Admin", "Admin", "ADMIN");
 
         Ingredient Garlic = makeIngredient("Garlic");
         Ingredient Thyme = makeIngredient("Thyme");
@@ -117,10 +118,11 @@ public class InitializeController {
         return ingredient;
     }
 
-    private RecipeUser makeRecipeUser(String username, String password) {
+    private RecipeUser makeRecipeUser(String username, String password, String role) {
         RecipeUser user = new RecipeUser();
         user.setUsername(username);
         user.setPassword(password);
+        user.setRole(role);
         userService.save(user);
         return user;
     }

@@ -5,6 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -16,6 +17,7 @@ import java.util.Set;
 
 @Entity
 public class RecipeUser implements UserDetails {
+    String ROLE_PREFIX = "ROLE_";
 
     @Id @GeneratedValue
     private Long userId;
@@ -23,10 +25,15 @@ public class RecipeUser implements UserDetails {
     @Column(unique=true)
     private String username;
     private String password;
+    private String role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        List<GrantedAuthority> list = new ArrayList<>();
+
+        list.add(new SimpleGrantedAuthority(ROLE_PREFIX + role));
+
+        return list;
     }
 
     @ManyToMany(mappedBy = "likedByUserSet", fetch = FetchType.EAGER, cascade = CascadeType.ALL) //deleting user deletes all recipes
@@ -78,5 +85,13 @@ public class RecipeUser implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
