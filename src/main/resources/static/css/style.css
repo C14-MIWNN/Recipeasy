@@ -6,11 +6,6 @@
     box-sizing: border-box;
 }
 
-header {
-    background-color: #f8f9fa;
-}
-
-
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -19,7 +14,55 @@ body {
     background-color: rgba(215, 237, 69, 0.58);
 }
 
+p {
+    color: #dddddd;
+}
+
+.navbar-grid {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-brand img {
+    width: 50px;
+    height: auto;
+    margin: 0;
+    border-radius: 50%;
+}
+
+.brand-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.button-container {
+    padding: 15px;
+    display: grid;
+    grid-auto-flow: row;
+    justify-content: center;
+    gap: 10px;
+}
+
 /* Logo styling */
+.logo-img {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+}
+
 .logo-text {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
@@ -31,10 +74,21 @@ body {
     transition: color 0.3s ease;
     margin-top: 15px;
     margin-left: 20px;
+    white-space: nowrap;
     text-align: left;
 }
 
 .logo-text:hover {
+    color: black;
+}
+
+.profile-icon .mdi {
+    font-size: 1.5em;
+    color: #555;
+    transition: color 0.2s ease;
+}
+
+.profile-icon:hover .mdi {
     color: black;
 }
 
@@ -76,14 +130,14 @@ body {
 }
 
 .footer {
-    position: fixed;
+    position: sticky;
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: transparent;
     color: white;
     text-align: center;
-    padding: 10px 0;
+    padding-top: 50px;
     z-index: 1000;
 }
 
@@ -102,6 +156,12 @@ body {
 
 h1 {
     text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #1e4901, #2c5300);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
 }
 
 
@@ -121,13 +181,41 @@ h1 {
     font-size: 0.5em;
 }
 .btn-primary {
-    background-color: transparent;
+    background-color: darkgreen;
     border-color: transparent;
+    text-align: right;
 }
 .btn-primary:hover {
     background-color:  black;
     border-color: transparent;
-
+}
+/* Button container (right) */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
+.button-container .btn,
+.profile-icon .mdi {
+    font-size: 1rem;
+    color: #555;
+    transition: color 0.2s ease;
+}
 
+.profile-icon:hover .mdi {
+    color: black;
+}
+
+.button-container .btn {
+    width: 150px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.button-container .btn:hover {
+    background-color: black;
+    color: white;
+}
