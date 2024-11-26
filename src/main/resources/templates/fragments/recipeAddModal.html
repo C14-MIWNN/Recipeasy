@@ -5,10 +5,8 @@
 <div th:fragment="newRecipeForm(formRecipe, #fields)">
   <form class="row g-3" th:action="@{/recipe/add}" method="post" th:object="${formRecipe}">
     <div class="row g-3 align-items-center">
-      <div class="col-3">
-        <label for="title" class="col-form-label">name</label>
-      </div>
-      <div class="col-9">
+      <div class="col-12">
+        <label for="title" class="col-form-label">Give your recipe a name</label>
         <input type="text" id="title" class="form-control" aria-describedby="titleHelpInLine" th:field="*{title}">
       </div>
       <div class="col-12">
