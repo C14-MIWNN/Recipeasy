@@ -57,7 +57,9 @@ public class RecipeUserController {
 
 
         userRecipes = recipeRepository.findByRecipeAuthor(recipeAuthor);
+        datamodel.addAttribute("user", currentUser);
         datamodel.addAttribute("userRecipes", userRecipes);
+        datamodel.addAttribute("newRecipe", new Recipe());
 
         return "userProfile";
     }

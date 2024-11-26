@@ -30,11 +30,10 @@
 
         <div class="mt-4">
             <h3>Your Recipes</h3>
-            <p>Feature coming soon!</p>
-            <div th:each="recipe : ${userRecipes}">
-                <p th:text="${recipe.dbName}">Recipe Name</p>
-                <p th:text="${recipe.cookTime}">Cook Time</p>
+            <div th:if="${userRecipes.isEmpty()}">
+                <p>You haven't added any recipes yet!</p>
             </div>
+            <div th:if="${!userRecipes.isEmpty()}" th:replace="~{fragments/recipe :: recipeCards(${userRecipes})}"></div>
         </div>
     </div>
 </div>
