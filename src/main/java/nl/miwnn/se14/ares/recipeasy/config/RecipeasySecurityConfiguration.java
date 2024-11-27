@@ -22,7 +22,7 @@ public class RecipeasySecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/recipe/overview").permitAll()
+                        .requestMatchers("/", "/recipe/overview", "/search").permitAll()
                         .requestMatchers("/user/register", "user/save").permitAll()
                         .requestMatchers("/webjars/**", "/css/**").permitAll()
                         .anyRequest().authenticated()
