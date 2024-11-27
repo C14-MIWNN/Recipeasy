@@ -112,7 +112,7 @@ public class RecipeController {
     }
 
     public String turnRecipeTitleIntoDbName(String title) {
-        return title.toLowerCase().replace(" ", "_");
+        return title.toLowerCase().replace(" ", "_").replaceAll("[^a-zA-Z]", "");
     }
 
     public List<Recipe> getRandomRecipes(int numberOfRecipes) {
