@@ -1,7 +1,6 @@
 package nl.miwnn.se14.ares.recipeasy.unittests;
 
 import nl.miwnn.se14.ares.recipeasy.controller.RecipeController;
-import nl.miwnn.se14.ares.recipeasy.model.CuisineType;
 import nl.miwnn.se14.ares.recipeasy.model.Ingredient;
 import nl.miwnn.se14.ares.recipeasy.model.Recipe;
 import nl.miwnn.se14.ares.recipeasy.model.RecipeUser;
@@ -44,11 +43,6 @@ public class RecipeControllerTests {
 
             @Override
             public Optional<List<Recipe>> findByDbNameContaining(String dBname) {
-                return Optional.empty();
-            }
-
-            @Override
-            public Optional<List<Recipe>> findByCuisineType(CuisineType cuisineType) {
                 return Optional.empty();
             }
 
@@ -544,11 +538,6 @@ public class RecipeControllerTests {
 
             @Override
             public Optional<List<Recipe>> findByDbNameContaining(String dBname) {
-                return Optional.empty();
-            }
-
-            @Override
-            public Optional<List<Recipe>> findByCuisineType(CuisineType cuisineType) {
                 return Optional.empty();
             }
 

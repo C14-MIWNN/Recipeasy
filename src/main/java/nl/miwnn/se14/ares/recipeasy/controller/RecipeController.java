@@ -1,10 +1,8 @@
 package nl.miwnn.se14.ares.recipeasy.controller;
 
 import nl.miwnn.se14.ares.recipeasy.dto.RecipeUserDTO;
-import nl.miwnn.se14.ares.recipeasy.model.CuisineType;
 import nl.miwnn.se14.ares.recipeasy.model.Recipe;
 import nl.miwnn.se14.ares.recipeasy.model.RecipeUser;
-import nl.miwnn.se14.ares.recipeasy.model.CuisineType;
 import nl.miwnn.se14.ares.recipeasy.repositories.IngredientRepository;
 import nl.miwnn.se14.ares.recipeasy.repositories.RecipeRepository;
 import nl.miwnn.se14.ares.recipeasy.repositories.RecipeUserRepository;
@@ -58,26 +56,6 @@ public class RecipeController {
     @GetMapping("/recipe/overview")
     private String showRecipeOverview(Model datamodel) {
         datamodel.addAttribute("allRecipes", recipeRepository.findAll());
-        return "recipeOverview";
-    }
-
-    @GetMapping("/recipe/overview/{cuisine}")
-    private String showRecipesByCuisineType(@PathVariable("cuisine") CuisineType cuisineType,
-                                            BindingResult result,
-                                            Model datamodel) {
-        Optional<List<Recipe>> searchResults = recipeRepository.findByCuisineType(cuisineType);
-
-        if (searchResults.isEmpty()) {
-            result.rejectValue("name", "search.results.empty",
-                    "Our site appears to have no recipes from this cuisine. " +
-                            "Maybe you can add a recipe from this cuisine!");
-        }
-
-        if (result.hasErrors()) {
-            return "homepage";
-        }
-
-        datamodel.addAttribute("allRecipes", searchResults.get()) ;
         return "recipeOverview";
     }
 
@@ -144,10 +122,9 @@ public class RecipeController {
         Collections.shuffle(allRecipes);
         ArrayList<Recipe> randomRecipes = new ArrayList<>();
 
-        for (int recipeIndex = 0; recipeIndex < numberOfRecipes; recipeIndex++) {
+        for (int recipeIndex = 0; recipeIndex < numberOfRecipes && recipeIndex < allRecipes.size(); recipeIndex++) {
             randomRecipes.add(allRecipes.get(recipeIndex));
         }
         return randomRecipes;
     }
-
 }
