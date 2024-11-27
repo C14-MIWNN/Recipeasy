@@ -1,6 +1,7 @@
 package nl.miwnn.se14.ares.recipeasy.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 /**
@@ -9,9 +10,10 @@ import jakarta.validation.constraints.Size;
  */
 public class RecipeUserDTO {
 
-    @NotBlank
+    @NotBlank (message = "Username cannot be empty")
     private String username;
 
+    @NotBlank(message = "Password cannot be empty.")
     @Size(min = 6)
     private String password;
     private String passwordConfirm;
