@@ -15,7 +15,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /*background-color: rgba(215, 237, 69, 0.58);*/
     background-color: rgb(223, 231, 119);
 
 }
@@ -141,7 +140,7 @@ p {
     height: 500px;
     border-radius: 20px;
     position: relative;
-    background: url('https://images.squarespace-cdn.com/content/v1/663a14a0d972d10439b43064/cc3d855d-eb56-4208-8f07-8df0d89eee3f/IMG_1771.JPG?format=750w') no-repeat center center/cover;
+    background: url('../Food_pics/chef-5993951_1280.jpg') no-repeat center center/cover;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add depth */
     overflow: hidden
 }

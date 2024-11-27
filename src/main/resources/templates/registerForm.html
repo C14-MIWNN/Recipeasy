@@ -30,9 +30,9 @@
 </div>
 </body>
 
+<div th:replace="~{fragments/recipeAddModal :: recipeFormModal(${formRecipe}, ${#fields})}"></div>
+<div th:replace="~{fragments/general :: bottomScripts}"></div>
 <div th:replace="~{fragments/recipeasyUser :: userFormModal(${formUser}, ${#fields})}"></div>
-
-
 <div th:replace="~{fragments/general :: footer}"></div>
 
 </html>
