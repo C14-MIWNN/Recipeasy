@@ -103,6 +103,7 @@ public class RecipeUserController {
         datamodel.addAttribute("user", new RecipeUserDTO());
         datamodel.addAttribute("formUser", new RecipeUserDTO());
         datamodel.addAttribute("formModalHidden", true);
+        datamodel.addAttribute("formRecipe", new Recipe());
         return "registerForm";
     }
 
