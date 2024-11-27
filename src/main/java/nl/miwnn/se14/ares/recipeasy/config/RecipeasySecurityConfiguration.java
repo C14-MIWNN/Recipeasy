@@ -23,8 +23,12 @@ public class RecipeasySecurityConfiguration {
         httpSecurity
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/", "/recipe/overview", "/search").permitAll()
-                        .requestMatchers("/user/register", "user/save").permitAll()
+                        .requestMatchers("/user/register", "/user/save", "/css/**").permitAll()
                         .requestMatchers("/webjars/**", "/css/**").permitAll()
+                        .requestMatchers("/user/profile").permitAll()
+                        .requestMatchers("/user/welcome").permitAll()
+                        .requestMatchers("/user/profile").permitAll()
+                        .requestMatchers("/user/welcome").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)

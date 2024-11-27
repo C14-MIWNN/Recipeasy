@@ -43,6 +43,7 @@ public class RecipeController {
         datamodel.addAttribute("recipe", new Recipe());
         datamodel.addAttribute("formRecipe", new Recipe());
         datamodel.addAttribute("newRecipe", new Recipe());
+        datamodel.addAttribute("searchRecipe", new Recipe());
         datamodel.addAttribute("allIngredients", ingredientRepository.findAll());
         datamodel.addAttribute("allRecipes", recipeRepository.findAll());
 

@@ -61,6 +61,7 @@ public class RecipeUserController {
         datamodel.addAttribute("userRecipes", userRecipes);
         datamodel.addAttribute("newRecipe", new Recipe());
 
+
         return "userProfile";
     }
 
@@ -82,21 +83,38 @@ public class RecipeUserController {
         }
 
         if (!userDtoToBeSaved.getPassword().equals(userDtoToBeSaved.getPasswordConfirm())) {
+            System.out.println("Passwords do not match.");
             result.rejectValue("password", "no.match", "The passwords do not match");
         }
 
         if (result.hasErrors()) {
             datamodel.addAttribute("allUsers", recipeUserService.getAllUsers());
+            datamodel.addAttribute("searchForm", new Recipe());
             datamodel.addAttribute("formModalHidden", false);
-            return "homepage";
+            datamodel.addAttribute("formRecipe", new Recipe());
+
+            return "registerForm";
         }
 
         userDtoToBeSaved.setRole("USER");
 
         recipeUserService.save(userDtoToBeSaved);
-        return "redirect:/";
+        return "redirect:/user/welcome";
     }
 
+    @GetMapping("/welcome")
+    public String showWelcome(Model datamodel) {
+        RecipeUserDTO currentUser = recipeUserService.getCurrentUser();
+        RecipeUser user = new RecipeUser();
+        datamodel.addAttribute("user", currentUser);
+        datamodel.addAttribute("formUser", new RecipeUserDTO());
+        datamodel.addAttribute("formModalHidden", true);
+        datamodel.addAttribute("searchForm", new Recipe());
+        datamodel.addAttribute("recipe", new Recipe());
+        datamodel.addAttribute("formRecipe", new Recipe());
+        datamodel.addAttribute("allIngredients", ingredientRepository.findAll());
+        return "welcome";
+    }
 
     @GetMapping("/register")
     public String showRegisterForm(Model datamodel) {
@@ -109,18 +127,30 @@ public class RecipeUserController {
 
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute @Valid RecipeUserDTO userDTO, BindingResult result, Model model) {
+    public String registerUser(@ModelAttribute @Valid RecipeUserDTO userDTO, BindingResult result, Model datamodel) {
+        System.out.println("Attempting to register user: " + userDTO.getUsername());
+
         if (recipeUserService.usernameInUse(userDTO.getUsername())) {
             result.rejectValue("username", "duplicate", "This username is already taken.");
         }
 
+
+        if (!userDTO.getPassword().equals(userDTO.getPasswordConfirm())) {
+            System.out.println("Username already in use.");
+            result.rejectValue("password", "no.match", "The passwords do not match");
+        }
+
         if (result.hasErrors()) {
-            model.addAttribute("formUser", userDTO);
+            datamodel.addAttribute("formUser", userDTO);
+            datamodel.addAttribute("formModalHidden", false);
+            datamodel.addAttribute("formRecipe", new Recipe());
             return "registerForm";
         }
 
+        userDTO.setRole("USER");
+
         recipeUserService.save(userDTO);
-        return "redirect:/user/profile";
+        return "redirect:/user/welcome";
     }
 
 
