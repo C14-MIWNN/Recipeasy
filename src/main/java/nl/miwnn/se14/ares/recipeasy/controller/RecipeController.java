@@ -1,6 +1,7 @@
 package nl.miwnn.se14.ares.recipeasy.controller;
 
 import nl.miwnn.se14.ares.recipeasy.dto.RecipeUserDTO;
+import nl.miwnn.se14.ares.recipeasy.model.Ingredient;
 import nl.miwnn.se14.ares.recipeasy.model.Recipe;
 import nl.miwnn.se14.ares.recipeasy.model.RecipeUser;
 import nl.miwnn.se14.ares.recipeasy.repositories.IngredientRepository;
@@ -24,16 +25,14 @@ public class RecipeController {
     private final RecipeRepository recipeRepository;
     private final IngredientRepository ingredientRepository;
 
-    public RecipeController(RecipeRepository recipeRepository,
-                            IngredientRepository ingredientRepository) {
+    public RecipeController(RecipeRepository recipeRepository, IngredientRepository ingredientRepository) {
         this.recipeRepository = recipeRepository;
         this.ingredientRepository = ingredientRepository;
     }
 
     @GetMapping("/")
     private String showHomepage(Model datamodel) {
-        List<String> cuisineTypes = Arrays.asList("Italian", "Mexican", "Japanese", "Indian", "French", "All");
-        datamodel.addAttribute("cuisineTypes", cuisineTypes);
+
         datamodel.addAttribute("formUser", new RecipeUserDTO());
         datamodel.addAttribute("formModalHidden", true);
         datamodel.addAttribute("searchForm", new Recipe());
@@ -42,6 +41,7 @@ public class RecipeController {
         datamodel.addAttribute("newRecipe", new Recipe());
         datamodel.addAttribute("allIngredients", ingredientRepository.findAll());
         datamodel.addAttribute("allRecipes", recipeRepository.findAll());
+        datamodel.addAttribute("newIngredient", new Ingredient());
 
         List<Recipe> randomRecipes = getRandomRecipes(3);
 
@@ -107,6 +107,25 @@ public class RecipeController {
         recipeRepository.save(recipe);
 
         datamodel.addAttribute("message", "Recipe added successfully!");
+        return "redirect:/recipe/overview";
+    }
+
+    @GetMapping("/ingredient/new")
+    private String showNewIngredientForm(Model datamodel) {
+        datamodel.addAttribute("formIngredient", new Ingredient());
+
+        return "newIngredientForm";
+    }
+
+    @PostMapping("/ingredient/save")
+    private String saveIngredient(@ModelAttribute("formIngredient") Ingredient ingredientToBeSaved, Model datamodel, BindingResult result) {
+        if (result.hasErrors()) {
+            System.err.println(result.getAllErrors());
+            return "redirect:/ingredient/new";
+        }
+
+        ingredientRepository.save(ingredientToBeSaved);
+        datamodel.addAttribute("allRecipes", recipeRepository.findAll());
         return "redirect:/recipe/overview";
     }
 
