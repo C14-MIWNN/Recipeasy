@@ -42,7 +42,7 @@ public class RecipeControllerTests {
             }
 
             @Override
-            public Optional<List<Recipe>> findByDbNameContaining(String dBname) {
+            public Optional<List<Recipe>> findByDbNameContaining(String dbName) {
                 return Optional.empty();
             }
 
@@ -352,167 +352,10 @@ public class RecipeControllerTests {
                 return null;
             }
         };
-        RecipeUserRepository recipeUserRepository = new RecipeUserRepository() {
-            @Override
-            public Optional<RecipeUser> findByUsername(String username) {
-                return Optional.empty();
-            }
-
-            @Override
-            public void flush() {
-
-            }
-
-            @Override
-            public <S extends RecipeUser> S saveAndFlush(S entity) {
-                return null;
-            }
-
-            @Override
-            public <S extends RecipeUser> List<S> saveAllAndFlush(Iterable<S> entities) {
-                return List.of();
-            }
-
-            @Override
-            public void deleteAllInBatch(Iterable<RecipeUser> entities) {
-
-            }
-
-            @Override
-            public void deleteAllByIdInBatch(Iterable<Long> longs) {
-
-            }
-
-            @Override
-            public void deleteAllInBatch() {
-
-            }
-
-            @Override
-            public RecipeUser getOne(Long aLong) {
-                return null;
-            }
-
-            @Override
-            public RecipeUser getById(Long aLong) {
-                return null;
-            }
-
-            @Override
-            public RecipeUser getReferenceById(Long aLong) {
-                return null;
-            }
-
-            @Override
-            public <S extends RecipeUser> List<S> findAll(Example<S> example) {
-                return List.of();
-            }
-
-            @Override
-            public <S extends RecipeUser> List<S> findAll(Example<S> example, Sort sort) {
-                return List.of();
-            }
-
-            @Override
-            public <S extends RecipeUser> List<S> saveAll(Iterable<S> entities) {
-                return List.of();
-            }
-
-            @Override
-            public List<RecipeUser> findAll() {
-                return List.of();
-            }
-
-            @Override
-            public List<RecipeUser> findAllById(Iterable<Long> longs) {
-                return List.of();
-            }
-
-            @Override
-            public <S extends RecipeUser> S save(S entity) {
-                return null;
-            }
-
-            @Override
-            public Optional<RecipeUser> findById(Long aLong) {
-                return Optional.empty();
-            }
-
-            @Override
-            public boolean existsById(Long aLong) {
-                return false;
-            }
-
-            @Override
-            public long count() {
-                return 0;
-            }
-
-            @Override
-            public void deleteById(Long aLong) {
-
-            }
-
-            @Override
-            public void delete(RecipeUser entity) {
-
-            }
-
-            @Override
-            public void deleteAllById(Iterable<? extends Long> longs) {
-
-            }
-
-            @Override
-            public void deleteAll(Iterable<? extends RecipeUser> entities) {
-
-            }
-
-            @Override
-            public void deleteAll() {
-
-            }
-
-            @Override
-            public List<RecipeUser> findAll(Sort sort) {
-                return List.of();
-            }
-
-            @Override
-            public Page<RecipeUser> findAll(Pageable pageable) {
-                return null;
-            }
-
-            @Override
-            public <S extends RecipeUser> Optional<S> findOne(Example<S> example) {
-                return Optional.empty();
-            }
-
-            @Override
-            public <S extends RecipeUser> Page<S> findAll(Example<S> example, Pageable pageable) {
-                return null;
-            }
-
-            @Override
-            public <S extends RecipeUser> long count(Example<S> example) {
-                return 0;
-            }
-
-            @Override
-            public <S extends RecipeUser> boolean exists(Example<S> example) {
-                return false;
-            }
-
-            @Override
-            public <S extends RecipeUser, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
-                return null;
-            }
-        };
 
         RecipeController recipeController = new RecipeController(
                 recipeRepository,
-                ingredientRepository,
-                recipeUserRepository);
+                ingredientRepository);
 
         // Act
         String dbName = recipeController.turnRecipeTitleIntoDbName("stamppot boerenkool met worst");
@@ -537,7 +380,7 @@ public class RecipeControllerTests {
             }
 
             @Override
-            public Optional<List<Recipe>> findByDbNameContaining(String dBname) {
+            public Optional<List<Recipe>> findByDbNameContaining(String dbName) {
                 return Optional.empty();
             }
 
@@ -847,167 +690,10 @@ public class RecipeControllerTests {
                 return null;
             }
         };
-        RecipeUserRepository recipeUserRepository = new RecipeUserRepository() {
-            @Override
-            public Optional<RecipeUser> findByUsername(String username) {
-                return Optional.empty();
-            }
-
-            @Override
-            public void flush() {
-
-            }
-
-            @Override
-            public <S extends RecipeUser> S saveAndFlush(S entity) {
-                return null;
-            }
-
-            @Override
-            public <S extends RecipeUser> List<S> saveAllAndFlush(Iterable<S> entities) {
-                return List.of();
-            }
-
-            @Override
-            public void deleteAllInBatch(Iterable<RecipeUser> entities) {
-
-            }
-
-            @Override
-            public void deleteAllByIdInBatch(Iterable<Long> longs) {
-
-            }
-
-            @Override
-            public void deleteAllInBatch() {
-
-            }
-
-            @Override
-            public RecipeUser getOne(Long aLong) {
-                return null;
-            }
-
-            @Override
-            public RecipeUser getById(Long aLong) {
-                return null;
-            }
-
-            @Override
-            public RecipeUser getReferenceById(Long aLong) {
-                return null;
-            }
-
-            @Override
-            public <S extends RecipeUser> List<S> findAll(Example<S> example) {
-                return List.of();
-            }
-
-            @Override
-            public <S extends RecipeUser> List<S> findAll(Example<S> example, Sort sort) {
-                return List.of();
-            }
-
-            @Override
-            public <S extends RecipeUser> List<S> saveAll(Iterable<S> entities) {
-                return List.of();
-            }
-
-            @Override
-            public List<RecipeUser> findAll() {
-                return List.of();
-            }
-
-            @Override
-            public List<RecipeUser> findAllById(Iterable<Long> longs) {
-                return List.of();
-            }
-
-            @Override
-            public <S extends RecipeUser> S save(S entity) {
-                return null;
-            }
-
-            @Override
-            public Optional<RecipeUser> findById(Long aLong) {
-                return Optional.empty();
-            }
-
-            @Override
-            public boolean existsById(Long aLong) {
-                return false;
-            }
-
-            @Override
-            public long count() {
-                return 0;
-            }
-
-            @Override
-            public void deleteById(Long aLong) {
-
-            }
-
-            @Override
-            public void delete(RecipeUser entity) {
-
-            }
-
-            @Override
-            public void deleteAllById(Iterable<? extends Long> longs) {
-
-            }
-
-            @Override
-            public void deleteAll(Iterable<? extends RecipeUser> entities) {
-
-            }
-
-            @Override
-            public void deleteAll() {
-
-            }
-
-            @Override
-            public List<RecipeUser> findAll(Sort sort) {
-                return List.of();
-            }
-
-            @Override
-            public Page<RecipeUser> findAll(Pageable pageable) {
-                return null;
-            }
-
-            @Override
-            public <S extends RecipeUser> Optional<S> findOne(Example<S> example) {
-                return Optional.empty();
-            }
-
-            @Override
-            public <S extends RecipeUser> Page<S> findAll(Example<S> example, Pageable pageable) {
-                return null;
-            }
-
-            @Override
-            public <S extends RecipeUser> long count(Example<S> example) {
-                return 0;
-            }
-
-            @Override
-            public <S extends RecipeUser> boolean exists(Example<S> example) {
-                return false;
-            }
-
-            @Override
-            public <S extends RecipeUser, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
-                return null;
-            }
-        };
 
         RecipeController recipeController = new RecipeController(
                 recipeRepository,
-                ingredientRepository,
-                recipeUserRepository);
+                ingredientRepository);
 
         // Act
         String dbName = recipeController.turnRecipeTitleIntoDbName("Macaroni");

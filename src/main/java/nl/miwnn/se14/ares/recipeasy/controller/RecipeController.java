@@ -23,14 +23,11 @@ public class RecipeController {
 
     private final RecipeRepository recipeRepository;
     private final IngredientRepository ingredientRepository;
-    private final RecipeUserRepository recipeUserRepository;
 
     public RecipeController(RecipeRepository recipeRepository,
-                            IngredientRepository ingredientRepository,
-                            RecipeUserRepository recipeUserRepository) {
+                            IngredientRepository ingredientRepository) {
         this.recipeRepository = recipeRepository;
         this.ingredientRepository = ingredientRepository;
-        this.recipeUserRepository = recipeUserRepository;
     }
 
     @GetMapping("/")
