@@ -30,6 +30,7 @@ public class RecipeasySecurityConfiguration {
                         .requestMatchers("/user/profile").permitAll()
                         .requestMatchers("/user/welcome").permitAll()
                         .requestMatchers("/Food_pics/**").permitAll()
+                        .requestMatchers("/recipe/delete/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)

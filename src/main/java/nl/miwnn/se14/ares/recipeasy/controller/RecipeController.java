@@ -6,7 +6,7 @@ import nl.miwnn.se14.ares.recipeasy.model.Recipe;
 import nl.miwnn.se14.ares.recipeasy.model.RecipeUser;
 import nl.miwnn.se14.ares.recipeasy.repositories.IngredientRepository;
 import nl.miwnn.se14.ares.recipeasy.repositories.RecipeRepository;
-import nl.miwnn.se14.ares.recipeasy.repositories.RecipeUserRepository;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -90,6 +90,7 @@ public class RecipeController {
     }
 
     @GetMapping("/recipe/delete/{recipeId}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     private String removeRecipeByName(@PathVariable("recipeId") Long recipeId, Model datamodel) {
         Optional<Recipe> recipe = recipeRepository.findById(recipeId);
         if (recipe.isEmpty()) {
