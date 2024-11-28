@@ -1,6 +1,8 @@
 package nl.miwnn.se14.ares.recipeasy.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,8 +24,15 @@ public class RecipeUser implements UserDetails {
     @Id @GeneratedValue
     private Long userId;
 
+
+    @NotBlank(message = "Username cannot be empty.")
+    @Size(max = 45, message = "Username cannot exceed 45 characters.")
     @Column(unique=true)
     private String username;
+
+    @NotBlank(message = "Password cannot be empty.")
+    @Size(max = 45, message = "Password cannot exceed 45 characters.")
+    @Column(unique=true)
     private String password;
     private String role;
 
