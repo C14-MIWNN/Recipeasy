@@ -1,23 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org">
 
 <body>
 
-<div th:fragment="recipeCards(allRecipes)" class="row row-cols-1 row-cols-md-6 g-4">
-    <div th:each="recipe : ${allRecipes}" th:insert="~{:: recipeCard(${recipe})}"></div>
+<div th:fragment="recipeCards(allRecipes)" class="container" style="margin: 5rem auto; padding: 0.5rem">
+    <div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center">
+        <div th:each="recipe : ${allRecipes}" class="col d-flex justify-content-center">
+            <div th:insert="~{:: recipeCard(${recipe})}"></div>
+        </div>
+    </div>
 </div>
 
 <div th:fragment="recipeCard(recipe)" class="col">
     <div>
         <a th:href="@{/recipe/detail/{recipeName}(recipeName = ${recipe.dbName})}">
-            <img style="width:150px; border-radius: 15px" th:src="${recipe.imageUrl}" th:alt="${recipe.title}"/>
-
+            <img style="width:275px; border-radius: 20px" th:src="${recipe.imageUrl}" th:alt="${recipe.title}"/>
             <p class="card-title" th:text="${recipe.title}"></p>
         </a>
     </div>
     <div>
         <p class="bi bi-stopwatch" th:text="|&nbsp${recipe.cookTime} minutes|"></p>
     </div>
+    <a role="button" th:href="@{/recipe/delete/{recipeId}(recipeId = *{recipe.id})}"
+       sec:authorize="hasRole('ADMIN')">Delete recipe</a>
 </div>
 
 </body>

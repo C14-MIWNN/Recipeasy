@@ -120,7 +120,6 @@ p {
 
 /* Homepage main content */
 
-
 .homepage h1 {
     font-size: 2rem;
     color: #333;
@@ -168,13 +167,14 @@ p {
 }
 
 .footer {
-    position: fixed;
+    position: static;
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: transparent;
     text-align: center;
     padding-top: 50px;
+    margin-top: 50px;
     z-index: 1000;
 }
 
@@ -211,6 +211,8 @@ h1 {
     font-size: 1em;
     font-weight: 600;
     color: #333;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .card-text {

@@ -19,16 +19,16 @@
     <div class="container">
         <h1 th:text="|${recipeToBeShown.title} - Cooking steps|"></h1>
         <p>So you've decided to try your hand at our <span th:text="|${recipeToBeShown.title}|"></span> recipe. Great! Below you'll find the ingredients you will need and the steps you need to follow. Enjoy the process!</p>
-        <img style="width:200px; border-radius: 20px" th:src="${recipeToBeShown.imageUrl}" th:alt="${recipeToBeShown.title}"/>
+        <img style="width:275px; border-radius: 25px" th:src="${recipeToBeShown.imageUrl}" th:alt="${recipeToBeShown.title}"/>
 
-        <h3>Ingredients</h3>
+        <h3 style="padding-top:10px; padding-bottom: 5px;">Ingredients</h3>
         <table>
             <tr th:each="ingredient : ${recipeToBeShown.getIngredients()}">
                 <td th:text="${ingredient.name}"></td>
             </tr>
         </table>
 
-        <h3>Steps</h3>
+        <h3 style="padding-top:10px; padding-bottom: 5px;">Steps</h3>
         <p th:text="${recipeToBeShown.cookingSteps}"></p>
         <h3>Enjoy your <span th:text="|${recipeToBeShown.title}|"></span>!</h3>
 

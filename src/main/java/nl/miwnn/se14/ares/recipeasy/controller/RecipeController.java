@@ -44,7 +44,7 @@ public class RecipeController {
         datamodel.addAttribute("allRecipes", recipeRepository.findAll());
         datamodel.addAttribute("newIngredient", new Ingredient());
 
-        List<Recipe> randomRecipes = getRandomRecipes(3);
+        List<Recipe> randomRecipes = getRandomRecipes(4);
 
         datamodel.addAttribute("randomRecipes", randomRecipes);
 
@@ -87,6 +87,17 @@ public class RecipeController {
         }
         datamodel.addAttribute("recipeToBeShown", recipe.get());
         return "recipeDetail";
+    }
+
+    @GetMapping("/recipe/delete/{recipeId}")
+    private String removeRecipeByName(@PathVariable("recipeId") Long recipeId, Model datamodel) {
+        Optional<Recipe> recipe = recipeRepository.findById(recipeId);
+        if (recipe.isEmpty()) {
+            return "redirect:/recipe/overview";
+        }
+        recipeRepository.deleteById(recipeId);
+        datamodel.addAttribute("allRecipes", recipeRepository.findAll());
+        return "recipeOverview";
     }
 
     @PostMapping("/recipe/add")
