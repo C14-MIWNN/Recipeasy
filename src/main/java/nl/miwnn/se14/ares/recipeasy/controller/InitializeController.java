@@ -46,7 +46,7 @@ public class InitializeController {
         Ingredient Thyme = makeIngredient("Thyme");
         Ingredient Rosemary = makeIngredient("Rosemary");
         Ingredient Chicken = makeIngredient("Chicken");
-        Ingredient Beaf = makeIngredient("Beaf");
+        Ingredient Beef = makeIngredient("Beef");
         Ingredient Pepper = makeIngredient("Pepper");
         Ingredient Salt = makeIngredient("Salt");
         Ingredient OliveOil = makeIngredient("Olive oil");
@@ -75,7 +75,7 @@ public class InitializeController {
                 15,
                 15,
                 "https://cdn.pixabay.com/photo/2024/08/04/15/47/ai-generated-8944735_1280.jpg",
-                Beaf, Pepper, Salt);
+                Beef, Pepper, Salt);
         Recipe stirfry = makeRecipe(
                 "stir_fry",
                 "Stir fry",
