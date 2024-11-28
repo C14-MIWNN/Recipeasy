@@ -15,12 +15,15 @@
     </div>
     <div class="mb-3">
       <label for="recipeIngredients" class="form-label">
-        Add multiple ingredients by pressing Ctrl (or CMD on Mac) and clicking the ingredients you want to add</label>
+        Add multiple ingredients by pressing Ctrl (or Cmd on Mac) and clicking the ingredients you want to add.<br>
+        The ingredients are listed alphabetically. Click a random ingredient and type the first letter of your ingredient to quickly skip through the list.
+      </label>
       <select class="form-control" id="recipeIngredients" size= 5 th:field="*{ingredients}" multiple>
         <option th:each="ingredientOption : ${allIngredients}"
                 th:text="${ingredientOption.name}"
                 th:value="${ingredientOption.id}"></option>
       </select>
+      <a th:href="@{/ingredient/new}" class="btn-primary">Add a new ingredient</a>
     </div>
     <div class="mb-3">
       <label for="recipeCookingSteps" class="form-label">Cooking Steps</label>
