@@ -26,12 +26,12 @@ public class RecipeUser implements UserDetails {
 
 
     @NotBlank(message = "Username cannot be empty.")
-    @Size(max = 45, message = "Username cannot exceed 45 characters.")
+    @Size(max = 255, message = "Username cannot exceed 255 characters.")
     @Column(unique=true)
     private String username;
 
     @NotBlank(message = "Password cannot be empty.")
-    @Size(max = 45, message = "Password cannot exceed 45 characters.")
+    @Size(max = 255, message = "Password cannot exceed 255 characters.")
     @Column(unique=true)
     private String password;
     private String role;

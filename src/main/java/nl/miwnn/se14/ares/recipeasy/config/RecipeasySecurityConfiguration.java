@@ -29,6 +29,7 @@ public class RecipeasySecurityConfiguration {
                         .requestMatchers("/user/welcome").permitAll()
                         .requestMatchers("/user/profile").permitAll()
                         .requestMatchers("/user/welcome").permitAll()
+                        .requestMatchers("/Food_pics/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
