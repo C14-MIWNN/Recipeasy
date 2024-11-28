@@ -20,16 +20,8 @@
 <div class="container mt-5">
     <h1>Welcome, <span th:text="${user.username}">Guest</span>!</h1>
 
-    <div class="card mt-4">
-        <div class="card-body">
-            <h3>Your Profile Information</h3>
-        </div>
-    </div>
 
     <div class="mt-4">
-        <h3>Favourite recipes</h3>
-        <p>Feature coming soon!</p>
-
         <div class="mt-4">
             <h3>Your Recipes</h3>
             <div th:if="${userRecipes.isEmpty()}">
