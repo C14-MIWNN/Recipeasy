@@ -9,16 +9,15 @@
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"  >
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.min.css}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 
     <title>Recipeasy</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 
 <body>
 <div th:replace="~{fragments/general :: navbar}"></div>
 
 <main class="homepage">
-
 
         <div class="search-container">
             <form th:action="@{/search}" method="post" th:object="${searchForm}" >
@@ -28,8 +27,6 @@
         </div>
 
         <div th:replace="~{fragments/recipe :: recipeCards(${randomRecipes})}"></div>
-
-
 
         <script th:unless="${formModalHidden}">
             new bootstrap.Modal(document.getElementById('newRecipe'), {}).toggle()
