@@ -15,16 +15,16 @@
 <body>
 <div th:replace="~{fragments/general :: navbar}"></div>
 
-<div class="card mt-4">
     <div class="card-body">
         <h3>Thank you for signing up!</h3>
+        <br>
+        <br>
         <p>You can now login to use amazing features:<br>
         - Add recipes <br>
         - See our suggested recipes <br>
             - Search for new recipes
             </p>
     </div>
-</div>
 
 
 <div th:replace="~{fragments/recipeAddModal :: recipeFormModal(${formRecipe}, ${#fields})}"></div>

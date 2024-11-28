@@ -29,7 +29,8 @@ body {
 }
 
 p {
-    color: #290277;
+    color: #15003a;
+    font-size: 1.3rem;
 }
 
 .navbar-grid {
@@ -260,9 +261,16 @@ h1 {
 .card-title {
     font-size: 1em;
     font-weight: 600;
-    color: rgba(158, 158, 158, 0.51);
+    color: rgb(1, 11, 46);
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+.card-body {
+    position: relative;
+    margin-top: 100px;
+    text-align: center;
+    margin-bottom: 100px;
 }
 
 .card-text {
