@@ -101,47 +101,6 @@ public class InitializeController {
         Ingredient Water = makeIngredient("Water");
         Ingredient Yogurt = makeIngredient("Yogurt");
 
-        Recipe chicken = makeRecipe(
-                "oven_baked_chicken",
-                "Oven baked chicken",
-                "1. Marinate the chicken. 2. Set the oven at 300 degrees.",
-                30,
-                60,
-                "https://cdn.pixabay.com/photo/2024/01/19/12/16/chicken-8518910_1280.jpg",
-                Chicken, Garlic, Rosemary);
-        Recipe pizza = makeRecipe(
-                "italian_pizza",
-                "Italian style pizza",
-                "1. Season the dough.",
-                30,
-                15,
-                "https://cdn.pixabay.com/photo/2024/03/01/08/44/pizza-8605916_1280.jpg",
-                Thyme, Garlic, Rosemary);
-        Recipe steak = makeRecipe(
-                "steak",
-                "Juicy steak",
-                "1. Step one. 2. Step two.",
-                15,
-                15,
-                "https://cdn.pixabay.com/photo/2024/08/04/15/47/ai-generated-8944735_1280.jpg",
-                Beef, Pepper, Salt);
-        Recipe stirfry = makeRecipe(
-                "stir_fry",
-                "Stir fry",
-                "1. Step one. 2. Step two.",
-                5,
-                30,
-                "https://cdn.pixabay.com/photo/2024/02/22/06/50/wok-8589237_1280.png",
-                Vegetables, OliveOil);
-        Recipe roast_beef = makeRecipe(
-                "roast_beef",
-                "Roast Beef",
-                "1. Season beef. 2. Sear in hot pan. 3. Roast in oven at 375°F. 4. Rest before slicing.",
-                20,
-                90,
-                "https://cdn.pixabay.com/photo/2016/08/08/15/19/meat-1578495_1280.jpg",
-                Beef, Garlic, Rosemary, Salt, Black_Pepper);
-
         Recipe tomato_soup = makeRecipe(
                 "tomato_soup",
                 "Tomato Soup",
@@ -158,14 +117,6 @@ public class InitializeController {
                 15,
                 "https://cdn.pixabay.com/photo/2016/06/28/17/32/salmon-1485014_1280.jpg",
                 Salmon, Lemon, Dill, Garlic, OliveOil);
-        Recipe chicken_curry = makeRecipe(
-                "chicken_curry",
-                "Chicken Curry",
-                "1. Brown chicken. 2. Sauté onions and spices. 3. Add coconut milk and simmer. 4. Serve with rice.",
-                15,
-                30,
-                "https://cdn.pixabay.com/photo/2016/03/05/19/02/curry-1238262_1280.jpg",
-                Chicken_Breast, Onion, Coconut_Milk, Cumin, Ginger);
         Recipe caesar_salad = makeRecipe(
                 "caesar_salad",
                 "Caesar Salad",
@@ -182,14 +133,6 @@ public class InitializeController {
                 45,
                 "https://cdn.pixabay.com/photo/2017/02/15/15/17/meal-2069021_1280.jpg",
                 Pasta, Tomato, Zucchini, Spinach, Cheese);
-        Recipe beef_stir_fry = makeRecipe(
-                "beef_stir_fry",
-                "Beef Stir Fry",
-                "1. Slice beef thinly. 2. Stir-fry beef in hot wok. 3. Add vegetables and sauce. 4. Serve over rice.",
-                20,
-                15,
-                "https://cdn.pixabay.com/photo/2015/11/19/10/38/food-1050813_1280.jpg",
-                Beef, Bell_Pepper, Broccoli, Soy_Sauce, Garlic);
         Recipe pesto_pasta = makeRecipe(
                 "pesto_pasta",
                 "Pesto Pasta",
@@ -214,14 +157,6 @@ public class InitializeController {
                 10,
                 "https://cdn.pixabay.com/photo/2015/04/08/13/13/food-712665_1280.jpg",
                 Garlic, Lemon, OliveOil, Parsley, Butter);
-        Recipe vegetable_soup = makeRecipe(
-                "vegetable_soup",
-                "Vegetable Soup",
-                "1. Sauté vegetables. 2. Add broth and simmer. 3. Season with herbs. 4. Serve hot.",
-                15,
-                30,
-                "https://cdn.pixabay.com/photo/2017/03/17/17/33/soup-2152237_1280.jpg",
-                Carrot, Celery, Onion, Potato, Tomato);
         Recipe chicken_fajitas = makeRecipe(
                 "chicken_fajitas",
                 "Chicken Fajitas",
@@ -238,30 +173,14 @@ public class InitializeController {
                 45,
                 "https://cdn.pixabay.com/photo/2017/01/11/11/33/cake-1971552_1280.jpg",
                 Spinach, Eggs, Cheese, Milk, Flour);
-        Recipe beef_stew = makeRecipe(
-                "beef_stew",
-                "Beef Stew",
-                "1. Brown beef. 2. Add vegetables and broth. 3. Simmer until tender. 4. Season and serve.",
-                30,
-                120,
-                "https://cdn.pixabay.com/photo/2017/03/17/17/33/potato-2152234_1280.jpg",
-                Beef, Potato, Carrot, Onion, Celery);
         Recipe apple_pie = makeRecipe(
                 "apple_pie",
                 "Apple Pie",
                 "1. Prepare crust. 2. Mix apple filling. 3. Assemble pie. 4. Bake at 425°F then 350°F.",
                 30,
                 60,
-                "https://cdn.pixabay.com/photo/2016/06/07/00/21/apple-pie-1440987_1280.jpg",
+                "https://cdn.pixabay.com/photo/2020/09/25/15/12/cake-5601646_1280.jpg",
                 Flour, Butter, Sugar, Cinnamon, Nutmeg);
-        Recipe garlic_mashed_potatoes = makeRecipe(
-                "garlic_mashed_potatoes",
-                "Garlic Mashed Potatoes",
-                "1. Boil potatoes. 2. Roast garlic. 3. Mash potatoes with garlic, butter, and milk. 4. Season and serve.",
-                15,
-                30,
-                "https://cdn.pixabay.com/photo/2017/03/17/17/33/potato-2152234_1280.jpg",
-                Potato, Garlic, Butter, Milk, Salt);
         Recipe pasta = makeRecipe(
                 "spaghetti_carbonara",
                 "Spaghetti Carbonara",
@@ -286,37 +205,13 @@ public class InitializeController {
                 30,
                 "https://cdn.pixabay.com/photo/2016/06/01/21/40/soup-1429793_1280.jpg",
                 Tomato, Onion, Garlic, Basil, OliveOil);
-        Recipe stir_fry = makeRecipe(
-                "vegetable_stir_fry",
-                "Vegetable Stir Fry",
-                "1. Chop vegetables. 2. Heat oil in wok. 3. Stir fry vegetables. 4. Add soy sauce and seasonings.",
-                15,
-                10,
-                "https://cdn.pixabay.com/photo/2015/10/01/14/26/vegetables-967000_1280.jpg",
-                Bell_Pepper, Broccoli, Carrot, Garlic, Soy_Sauce, Ginger);
-        Recipe risotto = makeRecipe(
-                "mushroom_risotto",
-                "Mushroom Risotto",
-                "1. Sauté mushrooms. 2. Cook rice gradually with broth. 3. Stir in cheese and butter.",
-                10,
-                30,
-                "https://cdn.pixabay.com/photo/2020/03/30/10/18/risotto-4983664_1280.jpg",
-                Rice, Mushroom, Onion, Butter, Cheese, Garlic);
-        Recipe curry = makeRecipe(
-                "vegetable_curry",
-                "Vegetable Curry",
-                "1. Sauté onions and spices. 2. Add vegetables and coconut milk. 3. Simmer until vegetables are tender.",
-                15,
-                25,
-                "https://cdn.pixabay.com/photo/2016/03/05/19/02/indian-food-1238619_1280.jpg",
-                Potato, Carrot, Cauliflower, Coconut_Milk, Cumin, Ginger);
         Recipe omelette = makeRecipe(
                 "cheese_omelette",
                 "Cheese Omelette",
                 "1. Beat eggs. 2. Cook in pan. 3. Add cheese and fold. 4. Serve hot.",
                 5,
                 10,
-                "https://cdn.pixabay.com/photo/2017/01/14/00/18/omelette-1978810_1280.jpg",
+                "https://cdn.pixabay.com/photo/2015/05/20/16/11/kitchen-775746_1280.jpg",
                 Eggs, Cheese, Butter, Salt, Black_Pepper);
         Recipe smoothie = makeRecipe(
                 "berry_smoothie",
@@ -326,21 +221,13 @@ public class InitializeController {
                 0,
                 "https://cdn.pixabay.com/photo/2018/09/23/09/31/smoothie-3697014_1280.jpg",
                 Milk, Yogurt, Honey, Spinach);
-        Recipe guacamole = makeRecipe(
-                "classic_guacamole",
-                "Classic Guacamole",
-                "1. Mash avocados. 2. Mix in other ingredients. 3. Season to taste.",
-                10,
-                0,
-                "https://cdn.pixabay.com/photo/2017/08/23/22/01/guacamole-2674830_1280.jpg",
-                Avocado, Tomato, Onion, Cilantro, Lemon, Salt);
         Recipe pancakes = makeRecipe(
                 "fluffy_pancakes",
                 "Fluffy Pancakes",
                 "1. Mix dry ingredients. 2. Add wet ingredients. 3. Cook on griddle until golden.",
                 10,
                 15,
-                "https://cdn.pixabay.com/photo/2016/11/29/11/38/breakfast-1869132_1280.jpg",
+                "https://cdn.pixabay.com/photo/2021/06/09/01/35/pancake-6322025_1280.jpg",
                 Flour, Eggs, Milk, Butter, Sugar);
         Recipe hummus = makeRecipe(
                 "classic_hummus",
@@ -350,15 +237,6 @@ public class InitializeController {
                 0,
                 "https://cdn.pixabay.com/photo/2021/01/16/09/05/meal-5921491_1280.jpg",
                 Garlic, Lemon, OliveOil, Cumin);
-        Recipe coleslaw = makeRecipe(
-                "creamy_coleslaw",
-                "Creamy Coleslaw",
-                "1. Shred vegetables. 2. Mix dressing. 3. Combine and chill.",
-                15,
-                60,
-                "https://cdn.pixabay.com/photo/2016/08/11/08/49/coleslaw-1585340_1280.jpg",
-                Carrot, Mayonnaise, Vinegar, Sugar, Salt);
-
         Recipe lemonade = makeRecipe(
                 "fresh_lemonade",
                 "Fresh Lemonade",
