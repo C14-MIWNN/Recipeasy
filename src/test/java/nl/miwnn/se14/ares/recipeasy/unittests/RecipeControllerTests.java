@@ -6,7 +6,6 @@ import nl.miwnn.se14.ares.recipeasy.model.Recipe;
 import nl.miwnn.se14.ares.recipeasy.model.RecipeUser;
 import nl.miwnn.se14.ares.recipeasy.repositories.IngredientRepository;
 import nl.miwnn.se14.ares.recipeasy.repositories.RecipeRepository;
-import nl.miwnn.se14.ares.recipeasy.repositories.RecipeUserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -694,7 +693,6 @@ public class RecipeControllerTests {
         RecipeController recipeController = new RecipeController(
                 recipeRepository,
                 ingredientRepository);
-
         // Act
         String dbName = recipeController.turnRecipeTitleIntoDbName("Macaroni");
 
@@ -708,73 +706,18 @@ public class RecipeControllerTests {
         // Arrange
         RecipeRepository recipeRepository = new RecipeRepository() {
             @Override
-            public List<Recipe> findAll(Sort sort) {
-                return List.of();
-            }
-
-            @Override
-            public Page<Recipe> findAll(Pageable pageable) {
-                return null;
-            }
-
-            @Override
-            public <S extends Recipe> S save(S entity) {
-                return null;
-            }
-
-            @Override
-            public <S extends Recipe> List<S> saveAll(Iterable<S> entities) {
-                return List.of();
-            }
-
-            @Override
-            public Optional<Recipe> findById(Long aLong) {
+            public Optional<Recipe> findByDbName(String dbName) {
                 return Optional.empty();
             }
 
             @Override
-            public boolean existsById(Long aLong) {
-                return false;
-            }
-
-            @Override
-            public List<Recipe> findAll() {
+            public List<Recipe> findByRecipeAuthor(RecipeUser recipeAuthor) {
                 return List.of();
             }
 
             @Override
-            public List<Recipe> findAllById(Iterable<Long> longs) {
-                return List.of();
-            }
-
-            @Override
-            public long count() {
-                return 0;
-            }
-
-            @Override
-            public void deleteById(Long aLong) {
-
-            }
-
-            @Override
-            public void delete(Recipe entity) {
-
-            }
-
-            @Override
-            public void deleteAllById(Iterable<? extends Long> longs) {
-
-            }
-
-            @Override
-            public void deleteAll(Iterable<? extends Recipe> entities) {
-
-            }
-
-            @Override
-            public void deleteAll() {
-
+            public Optional<List<Recipe>> findByDbNameContaining(String dbName) {
+                return Optional.empty();
             }
 
             @Override
@@ -823,11 +766,6 @@ public class RecipeControllerTests {
             }
 
             @Override
-            public <S extends Recipe> Optional<S> findOne(Example<S> example) {
-                return Optional.empty();
-            }
-
-            @Override
             public <S extends Recipe> List<S> findAll(Example<S> example) {
                 return List.of();
             }
@@ -835,6 +773,81 @@ public class RecipeControllerTests {
             @Override
             public <S extends Recipe> List<S> findAll(Example<S> example, Sort sort) {
                 return List.of();
+            }
+
+            @Override
+            public <S extends Recipe> List<S> saveAll(Iterable<S> entities) {
+                return List.of();
+            }
+
+            @Override
+            public List<Recipe> findAll() {
+                return List.of();
+            }
+
+            @Override
+            public List<Recipe> findAllById(Iterable<Long> longs) {
+                return List.of();
+            }
+
+            @Override
+            public <S extends Recipe> S save(S entity) {
+                return null;
+            }
+
+            @Override
+            public Optional<Recipe> findById(Long aLong) {
+                return Optional.empty();
+            }
+
+            @Override
+            public boolean existsById(Long aLong) {
+                return false;
+            }
+
+            @Override
+            public long count() {
+                return 0;
+            }
+
+            @Override
+            public void deleteById(Long aLong) {
+
+            }
+
+            @Override
+            public void delete(Recipe entity) {
+
+            }
+
+            @Override
+            public void deleteAllById(Iterable<? extends Long> longs) {
+
+            }
+
+            @Override
+            public void deleteAll(Iterable<? extends Recipe> entities) {
+
+            }
+
+            @Override
+            public void deleteAll() {
+
+            }
+
+            @Override
+            public List<Recipe> findAll(Sort sort) {
+                return List.of();
+            }
+
+            @Override
+            public Page<Recipe> findAll(Pageable pageable) {
+                return null;
+            }
+
+            @Override
+            public <S extends Recipe> Optional<S> findOne(Example<S> example) {
+                return Optional.empty();
             }
 
             @Override
@@ -856,91 +869,11 @@ public class RecipeControllerTests {
             public <S extends Recipe, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
                 return null;
             }
-
-            @Override
-            public Optional<Recipe> findByDbName(String dbName) {
-                return Optional.empty();
-            }
-
-            @Override
-            public List<Recipe> findByRecipeAuthor(RecipeUser recipeAuthor) {
-                return List.of();
-            }
-
-            @Override
-            public Optional<List<Recipe>> findByDbNameContaining(String dbName) {
-                return Optional.empty();
-            }
         };
         IngredientRepository ingredientRepository = new IngredientRepository() {
             @Override
-            public List<Ingredient> findAll(Sort sort) {
-                return List.of();
-            }
-
-            @Override
-            public Page<Ingredient> findAll(Pageable pageable) {
-                return null;
-            }
-
-            @Override
-            public <S extends Ingredient> S save(S entity) {
-                return null;
-            }
-
-            @Override
-            public <S extends Ingredient> List<S> saveAll(Iterable<S> entities) {
-                return List.of();
-            }
-
-            @Override
-            public Optional<Ingredient> findById(Integer integer) {
+            public Optional<Ingredient> findByName(String name) {
                 return Optional.empty();
-            }
-
-            @Override
-            public boolean existsById(Integer integer) {
-                return false;
-            }
-
-            @Override
-            public List<Ingredient> findAll() {
-                return List.of();
-            }
-
-            @Override
-            public List<Ingredient> findAllById(Iterable<Integer> integers) {
-                return List.of();
-            }
-
-            @Override
-            public long count() {
-                return 0;
-            }
-
-            @Override
-            public void deleteById(Integer integer) {
-
-            }
-
-            @Override
-            public void delete(Ingredient entity) {
-
-            }
-
-            @Override
-            public void deleteAllById(Iterable<? extends Integer> integers) {
-
-            }
-
-            @Override
-            public void deleteAll(Iterable<? extends Ingredient> entities) {
-
-            }
-
-            @Override
-            public void deleteAll() {
-
             }
 
             @Override
@@ -989,11 +922,6 @@ public class RecipeControllerTests {
             }
 
             @Override
-            public <S extends Ingredient> Optional<S> findOne(Example<S> example) {
-                return Optional.empty();
-            }
-
-            @Override
             public <S extends Ingredient> List<S> findAll(Example<S> example) {
                 return List.of();
             }
@@ -1001,6 +929,81 @@ public class RecipeControllerTests {
             @Override
             public <S extends Ingredient> List<S> findAll(Example<S> example, Sort sort) {
                 return List.of();
+            }
+
+            @Override
+            public <S extends Ingredient> List<S> saveAll(Iterable<S> entities) {
+                return List.of();
+            }
+
+            @Override
+            public List<Ingredient> findAll() {
+                return List.of();
+            }
+
+            @Override
+            public List<Ingredient> findAllById(Iterable<Integer> integers) {
+                return List.of();
+            }
+
+            @Override
+            public <S extends Ingredient> S save(S entity) {
+                return null;
+            }
+
+            @Override
+            public Optional<Ingredient> findById(Integer integer) {
+                return Optional.empty();
+            }
+
+            @Override
+            public boolean existsById(Integer integer) {
+                return false;
+            }
+
+            @Override
+            public long count() {
+                return 0;
+            }
+
+            @Override
+            public void deleteById(Integer integer) {
+
+            }
+
+            @Override
+            public void delete(Ingredient entity) {
+
+            }
+
+            @Override
+            public void deleteAllById(Iterable<? extends Integer> integers) {
+
+            }
+
+            @Override
+            public void deleteAll(Iterable<? extends Ingredient> entities) {
+
+            }
+
+            @Override
+            public void deleteAll() {
+
+            }
+
+            @Override
+            public List<Ingredient> findAll(Sort sort) {
+                return List.of();
+            }
+
+            @Override
+            public Page<Ingredient> findAll(Pageable pageable) {
+                return null;
+            }
+
+            @Override
+            public <S extends Ingredient> Optional<S> findOne(Example<S> example) {
+                return Optional.empty();
             }
 
             @Override
@@ -1021,11 +1024,6 @@ public class RecipeControllerTests {
             @Override
             public <S extends Ingredient, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
                 return null;
-            }
-
-            @Override
-            public Optional<Ingredient> findByName(String name) {
-                return Optional.empty();
             }
         };
 
