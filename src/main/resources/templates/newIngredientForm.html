@@ -19,20 +19,21 @@
 
 <div>
     <h1>Add a new ingredient</h1>
-    <form class="row g-3" th:action="@{/ingredient/save}" method="post" th:object="${formIngredient}">
+    <form class="row g-3" th:action="@{/ingredient/save}" method="post" th:object="${formIngredient}" style="padding-left: 20px">
         <div class="row g-3 align-items-center">
-            <div class="col-1">
+            <div class="col-2">
                 <label for="name" class="col-form-label">Name of the ingredient</label>
             </div>
-            <div class="col-5">
+            <div class="col-4">
                 <input type="text" id="name" class="form-control" aria-describedby="nameHelpInline" th:field="*{name}">
             </div>
-            <div class="col-6">
+            <div class="col-5">
                 <span id="nameHelpInline" class="form-text" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
                 </span>
+                <span><button type="submit" class="btn btn-secondary" style="width: 175px">Save ingredient</button></span>
             </div>
         </div>
-        <button type="submit">Save ingredient</button>
+
     </form>
 </div>
 </body>
