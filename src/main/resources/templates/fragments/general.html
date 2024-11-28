@@ -41,7 +41,7 @@
         <li><a class="btn btn-outline-success btn-md px-3 fw-semibold my-2"
                data-bs-toggle="modal"
                data-bs-target="#newRecipe"
-               sec:authorize="hasRole('ROLE_USER')">Add recipe</a></li>
+               sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">Add recipe</a></li>
       </ul>
 
       </div>
