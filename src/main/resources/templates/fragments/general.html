@@ -31,10 +31,10 @@
         <span class="mdi mdi-account-circle"></span>
       </a>
     <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-        Dropdown button
-      </button>
-      <ul class="dropdown-menu">
+      <span class="dropdown-toggle custom-menu" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Menu <i class="bi bi-chevron-down"></i>
+  </span>
+      <ul class="dropdown-menu custom-dropdown">
         <li><a class="btn btn-outline-primary btn-md my-2" th:href="@{/user/register}">Make an account</a></li>
         <li><a class="btn btn-outline-primary btn-md my-2" th:href="@{/login}" sec:authorize="isAnonymous()">Login</a></li>
         <li><a class="btn btn-outline-danger btn-md my-2" th:href="@{/logout}" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">Logout</a></li>
