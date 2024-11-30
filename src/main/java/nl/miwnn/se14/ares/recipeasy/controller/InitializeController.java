@@ -50,7 +50,6 @@ public class InitializeController {
         Ingredient Pepper = makeIngredient("Pepper");
         Ingredient Salt = makeIngredient("Salt");
         Ingredient OliveOil = makeIngredient("Olive oil");
-        Ingredient Vegetables = makeIngredient("Vegetables");
         Ingredient Basil = makeIngredient("Basil");
         Ingredient Black_Pepper = makeIngredient("Black Pepper");
         Ingredient Onion = makeIngredient("Onion");
