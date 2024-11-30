@@ -23,18 +23,18 @@
                 th:text="${ingredientOption.name}"
                 th:value="${ingredientOption.id}"></option>
       </select>
-      <a th:href="@{/ingredient/new}" class="btn btn-info" style="margin-top: 5px">Add a new ingredient</a>
+      <a th:href="@{/ingredient/new}" class="btn btn-outline-info" style="margin-top: 5px">Add a new ingredient</a>
     </div>
     <div class="mb-3">
-      <label for="recipeCookingSteps" class="form-label">Cooking Steps</label>
-      <textarea class="form-control" id="recipeCookingSteps" th:field="*{cookingSteps}" required></textarea>
+      <label for="recipeCookingSteps" class="form-label">Cooking steps</label>
+      <textarea class="form-control" id="recipeCookingSteps" th:field="*{cookingSteps}" style="height: 150px" required></textarea>
     </div>
     <div class="mb-3">
-      <label for="prepTime" class="form-label">Preparation Time (minutes)</label>
+      <label for="prepTime" class="form-label">Preparation time (minutes)</label>
       <input type="text" class="form-control" id="prepTime" th:field="*{prepTime}">
     </div>
     <div class="mb-3">
-      <label for="prepTime" class="form-label">Cooking Time (minutes)</label>
+      <label for="prepTime" class="form-label">Cooking time (minutes)</label>
       <input type="text" class="form-control" id="cookTime" th:field="*{cookTime}">
     </div>
     <div class="mb-3">
@@ -43,8 +43,8 @@
       <input type="text" class="form-control" id="recipeImage" th:field="*{imageUrl}">
     </div>
 
-    <button type="submit" class="btn btn-custom mb-3"> Save recipe</button>
-    <button type="button" class="btn btn-custom-delete" data-bs-dismiss="modal" aria-label="Cancel"> Cancel</button>
+    <button type="submit" class="btn btn-outline-primary"> Save recipe</button>
+    <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal" aria-label="Cancel"> Cancel</button>
 
   </form>
 </div>
